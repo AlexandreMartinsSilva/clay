@@ -14,11 +14,13 @@ import warning from 'warning';
 
 import Item from './Item';
 
-interface IProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
 	/**
 	 * Children elements received from ClayNavigationBar component.
 	 */
-	children: Array<React.ReactElement<React.ComponentProps<typeof Item>>>;
+	children:
+		| Array<React.ReactElement<React.ComponentProps<typeof Item>>>
+		| React.ReactElement<React.ComponentProps<typeof Item>>;
 
 	/**
 	 * Determines the style of the Navigation Bar
@@ -36,20 +38,24 @@ interface IProps extends React.HTMLAttributes<HTMLDivElement> {
 	triggerLabel: string;
 }
 
-const ClayNavigationBar: React.FunctionComponent<IProps> & {
+function ClayNavigationBar(props: IProps): JSX.Element & {
 	Item: typeof Item;
-} = ({
+};
+
+function ClayNavigationBar({
 	children,
 	className,
 	inverted = false,
 	spritemap,
 	triggerLabel,
 	...otherProps
-}: IProps) => {
+}: IProps) {
 	const [expanded, setExpanded] = React.useState(false);
 
-	const activeElementsCount = children.filter((child) => child.props.active)
-		.length;
+	const activeElementsCount = React.Children.map(
+		children,
+		(child) => child.props.active
+	).filter(Boolean).length;
 
 	warning(
 		activeElementsCount <= 1,
@@ -103,12 +109,16 @@ const ClayNavigationBar: React.FunctionComponent<IProps> & {
 						exitActive: 'collapsing',
 					}}
 					in={expanded}
-					onEnter={(el: HTMLElement) =>
-						el.setAttribute('style', `height: 0px`)
+					onEnter={(element: HTMLElement) =>
+						element.setAttribute('style', `height: 0px`)
 					}
-					onEntering={(el: HTMLElement) => setElementFullHeight(el)}
-					onExit={(el) => setElementFullHeight(el)}
-					onExiting={(el) => el.setAttribute('style', `height: 0px`)}
+					onEntering={(element: HTMLElement) =>
+						setElementFullHeight(element)
+					}
+					onExit={(element) => setElementFullHeight(element)}
+					onExiting={(element) =>
+						element.setAttribute('style', `height: 0px`)
+					}
 					timeout={250}
 				>
 					<div>
@@ -120,7 +130,7 @@ const ClayNavigationBar: React.FunctionComponent<IProps> & {
 			</ClayLayout.ContainerFluid>
 		</nav>
 	);
-};
+}
 
 ClayNavigationBar.Item = Item;
 

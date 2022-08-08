@@ -14,6 +14,7 @@ mainTabURL: 'docs/components/drop-down.html'
     -   [Full](#css-full)
     -   [Width Full](#css-width-full)
     -   [Width Sm](#css-width-sm)
+    -   [Width Shrink](#css-width-shrink)
     -   [Height Auto](#css-height-auto)
 -   [Content Types](#css-content-types)
     -   [Dividers](#css-dividers)
@@ -25,6 +26,7 @@ mainTabURL: 'docs/components/drop-down.html'
         -   [Start](#css-start)
         -   [End](#css-end)
         -   [Start and End](#css-start-and-end)
+    -   [Autofit](#css-autofit)
     -   [Keyboard Shortcuts](#css-keyboard-shortcuts)
     -   [Scrolling Content](#css-scrolling-content)
 -   [Actions](#css-actions)
@@ -434,12 +436,55 @@ The modifier class `dropdown-menu-width-full` on `dropdown-menu` makes the menu 
 
 The modifier class `dropdown-menu-width-sm` on `dropdown-menu` makes the menu 500px wide. The `dropdown-menu` becomes 100% wide at screen sizes 767px and below. This should be used with the Clay Drop Down plugin which renders the `dropdown-menu` as a direct child of the `body` element.
 
+<div class="sheet-example">
+	<div class="clay-site-dropdown-menu-container">
+		<ul aria-labelledby="dropdownMenuWide1" class="dropdown-menu dropdown-menu-width-sm show" style="position:static;">
+			<li class="dropdown-header">Dropdown Header</li>
+			<li><a class="dropdown-item" href="#1">Action</a></li>
+			<li><a class="disabled dropdown-item" href="#1" tabindex="-1">Disabled</a></li>
+			<li class="dropdown-divider"></li>
+			<li><a class="dropdown-item" href="#1">Scope</a></li>
+		</ul>
+	</div>
+</div>
+
 ```html
 <ul
 	aria-labelledby="theDropdownToggleId"
 	class="dropdown-menu dropdown-menu-width-sm"
 >
 	<li class="dropdown-header">Dropdown Header</li>
+	<li><a class="dropdown-item" href="#1">Action</a></li>
+	<li>
+		<a class="disabled dropdown-item" href="#1" tabindex="-1">Disabled</a>
+	</li>
+	<li class="dropdown-divider"></li>
+	<li><a class="dropdown-item" href="#1">Scope</a></li>
+</ul>
+```
+
+### Dropdown Menu Width Shrink(#css-width-shrink)
+
+The modifier class `dropdown-menu-width-shrink` on `dropdown-menu` makes the menu only be as wide as the text inside and maxes out at 240px wide. This forces `dropdown-item` text to be on one line.
+
+<div class="sheet-example">
+	<div class="clay-site-dropdown-menu-container">
+		<ul aria-labelledby="dropdownMenuWide1" class="dropdown-menu dropdown-menu-width-shrink show" style="position:static;">
+			<li class="dropdown-header">Header</li>
+			<li><a class="dropdown-item" href="#1">Action</a></li>
+			<li><a class="disabled dropdown-item" href="#1" tabindex="-1">Disabled</a></li>
+			<li class="dropdown-divider"></li>
+			<li><a class="dropdown-item" href="#1">Scope</a></li>
+		</ul>
+	</div>
+</div>
+
+```html
+<ul
+	aria-labelledby="dropdownMenuWide1"
+	class="dropdown-menu dropdown-menu-width-shrink"
+>
+	<li class="dropdown-header">Header</li>
 	<li><a class="dropdown-item" href="#1">Action</a></li>
 	<li>
 		<a class="disabled dropdown-item" href="#1" tabindex="-1">Disabled</a>
@@ -837,9 +882,7 @@ The modifier class `dropdown-menu-height-auto` on `dropdown-menu` removes the `m
 ```html
 <ul aria-labelledby="theDropdownToggleId" class="dropdown-menu">
 	<li class="dropdown-section form-group">
-		<label for="basicInputTypeText1">
-			Text 1
-		</label>
+		<label for="basicInputTypeText1"> Text 1 </label>
 		<input
 			class="form-control form-control-sm"
 			id="basicInputTypeText1"
@@ -850,9 +893,7 @@ The modifier class `dropdown-menu-height-auto` on `dropdown-menu` removes the `m
 	<li class="dropdown-subheader">Form Section</li>
 	<li class="dropdown-section">
 		<div class="form-group">
-			<label for="basicInputTypeText2">
-				Text 2
-			</label>
+			<label for="basicInputTypeText2"> Text 2 </label>
 			<input
 				class="form-control form-control-sm"
 				id="basicInputTypeText2"
@@ -863,9 +904,7 @@ The modifier class `dropdown-menu-height-auto` on `dropdown-menu` removes the `m
 	</li>
 	<li class="dropdown-section">
 		<div class="form-group">
-			<label for="basicInputTypeText3">
-				Text 3
-			</label>
+			<label for="basicInputTypeText3"> Text 3 </label>
 			<input
 				class="form-control form-control-sm"
 				id="basicInputTypeText3"
@@ -1211,6 +1250,200 @@ The modifier class `dropdown-menu-height-auto` on `dropdown-menu` removes the `m
 </ul>
 ```
 
+### Autofit(#css-autofit)
+
+Make content expand to fill remaining space in a `dropdown-item` or create equally spaced content with a nested `.autofit-row`, `.autofit-col`, `.autofit-col-shrink`, and `.autofit-col-expand`.
+
+<div class="sheet-example">
+	<div class="clay-site-dropdown-menu-container">
+		<ul aria-labelled-by="theDropdownToggleId" class="dropdown-menu show">
+			<li>
+				<a class="autofit-row dropdown-item" href="#1">
+					<span class="autofit-col autofit-col-expand">
+						<span class="autofit-section">
+							<span class="inline-item inline-item-before">
+								<svg class="lexicon-icon lexicon-icon-en-us" focusable="false" role="presentation">
+									<use xlink:href="/images/icons/icons.svg#en-us"></use>
+								</svg>
+							</span>
+							en-US
+						</span>
+					</span>
+					<span class="autofit-col">
+						<span class="label label-info">
+							<span class="label-item label-item-expand">Default</span>
+						</span>
+					</span>
+				</a>
+			</li>
+			<li>
+				<a class="autofit-row disabled dropdown-item" href="#1">
+					<span class="autofit-col autofit-col-expand">
+						<span class="autofit-section">
+							<span class="inline-item inline-item-before">
+								<svg class="lexicon-icon lexicon-icon-en-gb" focusable="false" role="presentation">
+									<use xlink:href="/images/icons/icons.svg#en-gb"></use>
+								</svg>
+							</span>
+							en-GB
+						</span>
+					</span>
+					<span class="autofit-col">
+						<span class="label label-success">
+							<span class="label-item label-item-expand">Translated</span>
+						</span>
+					</span>
+				</a>
+			</li>
+			<li>
+				<a class="active autofit-row dropdown-item" href="#1" tabindex="-1">
+					<span class="autofit-col autofit-col-expand">
+						<span class="autofit-section">
+							<span class="inline-item inline-item-before">
+								<svg class="lexicon-icon lexicon-icon-es-es" focusable="false" role="presentation">
+									<use xlink:href="/images/icons/icons.svg#es-es"></use>
+								</svg>
+							</span>
+							es-ES
+						</span>
+					</span>
+					<span class="autofit-col">
+						<span class="label label-success">
+							<span class="label-item label-item-expand">Translated</span>
+						</span>
+					</span>
+				</a>
+			</li>
+			<li>
+				<a class="autofit-row dropdown-item" href="#1">
+					<span class="autofit-col autofit-col-expand">
+						<span class="autofit-section">
+							<span class="inline-item inline-item-before">
+								<svg class="lexicon-icon lexicon-icon-fr-fr" focusable="false" role="presentation">
+									<use xlink:href="/images/icons/icons.svg#fr-fr"></use>
+								</svg>
+							</span>
+							fr-FR
+						</span>
+					</span>
+					<span class="autofit-col">
+						<span class="label label-warning">
+							<span class="label-item label-item-expand">Not Translated</span>
+						</span>
+					</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+```html
+<ul aria-labelled-by="theDropdownToggleId" class="dropdown-menu show">
+	<li>
+		<a class="autofit-row dropdown-item" href="#1">
+			<span class="autofit-col autofit-col-expand">
+				<span class="autofit-section">
+					<span class="inline-item inline-item-before">
+						<svg
+							class="lexicon-icon lexicon-icon-en-us"
+							focusable="false"
+							role="presentation"
+						>
+							<use
+								xlink:href="/images/icons/icons.svg#en-us"
+							></use>
+						</svg>
+					</span>
+					en-US
+				</span>
+			</span>
+			<span class="autofit-col">
+				<span class="label label-info">
+					<span class="label-item label-item-expand">Default</span>
+				</span>
+			</span>
+		</a>
+	</li>
+	<li>
+		<a class="autofit-row disabled dropdown-item" href="#1">
+			<span class="autofit-col autofit-col-expand">
+				<span class="autofit-section">
+					<span class="inline-item inline-item-before">
+						<svg
+							class="lexicon-icon lexicon-icon-en-gb"
+							focusable="false"
+							role="presentation"
+						>
+							<use
+								xlink:href="/images/icons/icons.svg#en-gb"
+							></use>
+						</svg>
+					</span>
+					en-GB
+				</span>
+			</span>
+			<span class="autofit-col">
+				<span class="label label-success">
+					<span class="label-item label-item-expand">Translated</span>
+				</span>
+			</span>
+		</a>
+	</li>
+	<li>
+		<a class="active autofit-row dropdown-item" href="#1" tabindex="-1">
+			<span class="autofit-col autofit-col-expand">
+				<span class="autofit-section">
+					<span class="inline-item inline-item-before">
+						<svg
+							class="lexicon-icon lexicon-icon-es-es"
+							focusable="false"
+							role="presentation"
+						>
+							<use
+								xlink:href="/images/icons/icons.svg#es-es"
+							></use>
+						</svg>
+					</span>
+					es-ES
+				</span>
+			</span>
+			<span class="autofit-col">
+				<span class="label label-success">
+					<span class="label-item label-item-expand">Translated</span>
+				</span>
+			</span>
+		</a>
+	</li>
+	<li>
+		<a class="autofit-row dropdown-item" href="#1">
+			<span class="autofit-col autofit-col-expand">
+				<span class="autofit-section">
+					<span class="inline-item inline-item-before">
+						<svg
+							class="lexicon-icon lexicon-icon-fr-fr"
+							focusable="false"
+							role="presentation"
+						>
+							<use
+								xlink:href="/images/icons/icons.svg#fr-fr"
+							></use>
+						</svg>
+					</span>
+					fr-FR
+				</span>
+			</span>
+			<span class="autofit-col">
+				<span class="label label-warning">
+					<span class="label-item label-item-expand"
+						>Not Translated</span
+					>
+				</span>
+			</span>
+		</a>
+	</li>
+</ul>
+```
+
 ### Keyboard Shortcuts(#css-keyboard-shortcuts)
 
 <div class="sheet-example">
@@ -1310,9 +1543,7 @@ The modifier class `dropdown-menu-height-auto` on `dropdown-menu` removes the `m
 <ul aria-labelledby="theDropdownToggleId" class="dropdown-menu show">
 	<li>
 		<a class="active autofit-row dropdown-item" href="#1" tabindex="-1">
-			<span class="autofit-col autofit-col-expand">
-				First Option
-			</span>
+			<span class="autofit-col autofit-col-expand"> First Option </span>
 			<span class="autofit-col">
 				<kbd class="c-kbd c-kbd-inline">
 					<kbd class="c-kbd">⌘</kbd>
@@ -1322,9 +1553,7 @@ The modifier class `dropdown-menu-height-auto` on `dropdown-menu` removes the `m
 	</li>
 	<li>
 		<a class="autofit-row disabled dropdown-item" href="#1" tabindex="-1">
-			<span class="autofit-col autofit-col-expand">
-				Second Option
-			</span>
+			<span class="autofit-col autofit-col-expand"> Second Option </span>
 			<span class="autofit-col">
 				<kbd class="c-kbd c-kbd-inline">
 					<kbd class="c-kbd">⌘</kbd><kbd class="c-kbd">K</kbd>
@@ -1352,32 +1581,24 @@ The modifier class `dropdown-menu-height-auto` on `dropdown-menu` removes the `m
 	</li>
 	<li>
 		<a class="autofit-row dropdown-item" href="#1">
-			<span class="autofit-col autofit-col-expand">
-				Fourth Option
-			</span>
+			<span class="autofit-col autofit-col-expand"> Fourth Option </span>
 		</a>
 	</li>
 	<li class="dropdown-divider"></li>
 	<li>
 		<a class="autofit-row dropdown-item" href="#1">
-			<span class="autofit-col autofit-col-expand">
-				Fifth Option
-			</span>
+			<span class="autofit-col autofit-col-expand"> Fifth Option </span>
 		</a>
 	</li>
 	<li class="dropdown-divider"></li>
 	<li>
 		<a class="autofit-row dropdown-item" href="#1">
-			<span class="autofit-col autofit-col-expand">
-				Sixth Option
-			</span>
+			<span class="autofit-col autofit-col-expand"> Sixth Option </span>
 		</a>
 	</li>
 	<li>
 		<a class="autofit-row dropdown-item" href="#1">
-			<span class="autofit-col autofit-col-expand">
-				Seventh Option
-			</span>
+			<span class="autofit-col autofit-col-expand"> Seventh Option </span>
 			<span class="autofit-col">
 				<kbd class="c-kbd c-kbd-inline">
 					<kbd class="c-kbd">⌘</kbd><kbd class="c-kbd">P</kbd>
@@ -1388,9 +1609,7 @@ The modifier class `dropdown-menu-height-auto` on `dropdown-menu` removes the `m
 	<li class="dropdown-divider"></li>
 	<li>
 		<a class="autofit-row dropdown-item" href="#1">
-			<span class="autofit-col autofit-col-expand">
-				Eighth Option
-			</span>
+			<span class="autofit-col autofit-col-expand"> Eighth Option </span>
 		</a>
 	</li>
 </ul>

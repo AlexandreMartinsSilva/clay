@@ -35,6 +35,18 @@ const mapStatus = {
 	stable: 'success',
 };
 
+const getStorybookUrl = (packageNpm, path) => {
+	const url = 'https://storybook.clayui.com/?path=/story/';
+
+	if (path) {
+		return url + path;
+	}
+
+	return `${url}design-system-components-${packageNpm
+		.replace('@clayui/', '')
+		.replace('-', '')}`;
+};
+
 const PackageInfo = ({fields = {}, frontmatter = {}}) => (
 	<p className="clay-site-label">
 		{fields.packageStatus && (
@@ -71,7 +83,7 @@ const PackageInfo = ({fields = {}, frontmatter = {}}) => (
 				target="_blank"
 			>
 				<span className="c-inner" tabIndex="-1">
-					{'View in Lexicon'}
+					View in Lexicon
 				</span>
 			</a>
 		)}
@@ -88,15 +100,16 @@ const PackageInfo = ({fields = {}, frontmatter = {}}) => (
 					target="_blank"
 				>
 					<span className="c-inner" tabIndex="-1">
-						{'CHANGELOG'}
+						CHANGELOG
 					</span>
 				</a>
 
 				<a
 					className="align-middle d-inline-block link-primary"
-					href={`https://storybook.clayui.com/?path=/story/components-${frontmatter.packageNpm
-						.replace('@clayui/', 'clay')
-						.replace('-', '')}`}
+					href={getStorybookUrl(
+						frontmatter.packageNpm,
+						frontmatter.storybookPath
+					)}
 					rel="noopener noreferrer"
 					target="_blank"
 				>
@@ -146,7 +159,7 @@ const Content = ({html, jsx}) =>
 		</MDXProvider>
 	) : null;
 
-export default (props) => {
+export default function Documentation(props) {
 	const {
 		data,
 		location,
@@ -320,9 +333,9 @@ export default (props) => {
 											<div className="border-top py-5 row">
 												<div className="col-6">
 													<p className="legal">
-														{
-															'How can this be improved? Create an issue!'
-														}
+														How can this be
+														improved? Create an
+														issue!
 													</p>
 												</div>
 												<div className="col-6 p-md-0">
@@ -363,10 +376,10 @@ export default (props) => {
 			</ClayLinkContext.Provider>
 		</div>
 	);
-};
+}
 
 export const pageQuery = graphql`
-	query($pathGroup: [String!], $slug: String!, $mainTabURL: String!) {
+	query ($pathGroup: [String!], $slug: String!, $mainTabURL: String!) {
 		pageMdx: mdx(fields: {slug: {eq: $slug}}) {
 			excerpt
 			timeToRead
@@ -376,6 +389,7 @@ export const pageQuery = graphql`
 				navigationParent
 				lexiconDefinition
 				packageNpm
+				storybookPath
 				title
 			}
 			fields {
@@ -402,6 +416,7 @@ export const pageQuery = graphql`
 				disableTOC
 				lexiconDefinition
 				packageNpm
+				storybookPath
 				title
 			}
 			fields {

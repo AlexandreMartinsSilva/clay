@@ -10,6 +10,7 @@ order: 3
 <div class="nav-toc">
 
 -   [Headings](#css-headings)
+-   [Display](#css-display)
 -   [Lead](#css-lead)
 -   [Inline Text Elements](#css-inline-text-elements)
 -   [Reference Mark](#css-reference-mark)
@@ -29,6 +30,30 @@ order: 3
 
 ## Headings(#css-headings)
 
+Responsive styles are not included by default. You can set them through the `$h#` maps or write your own media queries.
+
+```scss{expanded}
+$h1: (
+	font-size: 1.625rem,
+	media-breakpoint-up: (
+		lg: (
+			font-size: 2rem,
+		),
+		xl: (
+			font-size: 4rem,
+		),
+	),
+	media-breakpoint-down: (
+		sm: (
+			font-size: 1rem,
+		),
+		xs: (
+			font-size: 0.875rem,
+		),
+	),
+);
+```
+
 <div class="sheet-example">
     <h1>h1 Article Heading <small>Sub text</small></h1>
     <h2>h2 Article Heading <small>Sub text</small></h2>
@@ -45,6 +70,40 @@ order: 3
 <h4>h4 Article Heading <small>Sub text</small></h4>
 <h5>h5 Article Heading <small>Sub text</small></h5>
 <h6>h6 Article Heading <small>Sub text</small></h6>
+```
+
+## Display(#css-display)
+
+Larger heading styles to make content stand out. Responsive styles are not included by default. You can set them through the `$display-*` map or write your own media queries.
+
+```scss{expanded}
+$display-1: (
+    media-breakpoint-down: (
+        md: (
+            font-size: 4.5rem,
+        ),
+        sm: (
+            font-size: 3.75rem,
+        ),
+        xs: (
+            font-size: 2.5rem,
+        ),
+    ),
+);
+```
+
+<div class="sheet-example">
+	<div class="display-1">Display 1</div>
+	<div class="display-2">Display 2</div>
+	<div class="display-3">Display 3</div>
+	<div class="display-4">Display 4</div>
+</div>
+
+```html
+<div class="display-1">Display 1</div>
+<div class="display-2">Display 2</div>
+<div class="display-3">Display 3</div>
+<div class="display-4">Display 4</div>
 ```
 
 ## Lead(#css-lead)

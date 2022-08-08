@@ -48,20 +48,24 @@ button.link-outline {
 
 .component-title {
 	@include clay-text-typography($component-title);
-
-	a {
-		@include clay-link($component-title-link);
-	}
 }
 
 .component-subtitle {
 	@include clay-text-typography($component-subtitle);
-
-	a {
-		@include clay-link($component-subtitle-link);
-	}
 }
 
 .component-action {
 	@include clay-link($component-action);
+}
+
+.component-text {
+	@include clay-text-typography($component-text);
+}
+
+.component-icon {
+	@include clay-css($component-icon);
+
+	.lexicon-icon {
+		@include clay-css(map-get($component-icon, lexicon-icon));
+	}
 }

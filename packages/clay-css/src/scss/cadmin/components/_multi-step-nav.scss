@@ -32,7 +32,7 @@
 
 .multi-step-title-center {
 	.multi-step-title {
-		margin-left: $cadmin-multi-step-icon-size / 2;
+		margin-left: $cadmin-multi-step-icon-size * 0.5;
 		max-width: $cadmin-multi-step-title-max-width;
 		overflow: hidden;
 		position: relative;
@@ -60,7 +60,7 @@
 			@if ($cadmin-multi-step-icon-active-bg-image) {
 				&[data-multi-step-icon] {
 					&:before {
-						content: normal;
+						content: none;
 					}
 				}
 			}
@@ -98,7 +98,7 @@
 
 				&[data-multi-step-icon] {
 					&:before {
-						content: normal;
+						content: none;
 					}
 				}
 
@@ -133,7 +133,7 @@
 			@if ($cadmin-multi-step-icon-disabled-bg-image) {
 				&[data-multi-step-icon] {
 					&:before {
-						content: normal;
+						content: none;
 					}
 				}
 			}
@@ -171,7 +171,7 @@
 	background-color: $cadmin-multi-step-divider-bg;
 	height: $cadmin-multi-step-divider-height;
 	margin-left: $cadmin-multi-step-icon-size;
-	margin-top: -$cadmin-multi-step-divider-height;
+	margin-top: math-sign($cadmin-multi-step-divider-height);
 	position: relative;
 	top: $cadmin-multi-step-divider-top;
 }
@@ -340,7 +340,7 @@
 			min-width: $cadmin-multi-step-icon-size;
 			padding-top: $cadmin-multi-step-title-font-size +
 				$cadmin-multi-step-title-margin-bottom +
-				($cadmin-multi-step-divider-height / 2);
+				($cadmin-multi-step-divider-height * 0.5);
 		}
 
 		.multi-step-title {

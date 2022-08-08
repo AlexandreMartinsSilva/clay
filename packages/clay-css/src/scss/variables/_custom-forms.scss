@@ -20,7 +20,7 @@ $custom-control-indicator-position-top: 0.25rem !default;
 $custom-control-indicator-focus-border-color: $input-focus-border-color !default;
 $custom-control-indicator-focus-box-shadow: $input-focus-box-shadow !default;
 
-$custom-control-indicator-active-bg: lighten(
+$custom-control-indicator-active-bg: clay-lighten(
 	$component-active-bg,
 	0.35
 ) !default;
@@ -29,7 +29,7 @@ $custom-control-indicator-active-border-color: $custom-control-indicator-active-
 $custom-control-indicator-active-color: $component-active-color !default;
 
 $custom-control-indicator-disabled-bg: $input-disabled-bg !default;
-$custom-control-indicator-disabled-border-color: null !default;
+$custom-control-indicator-disabled-border-color: $gray-400 !default;
 $custom-control-indicator-disabled-cursor: $disabled-cursor !default;
 
 // Custom Control Indicator Checked
@@ -59,7 +59,7 @@ $custom-control-indicator-checked-disabled-bg: $custom-control-indicator-disable
 $custom-control-indicator-disabled-checked-border-color: null !default;
 $custom-control-indicator-checked-disabled-border-color: $custom-control-indicator-disabled-checked-border-color !default;
 
-// Custom Control
+// .custom-control
 
 $custom-control-cursor: null !default;
 $custom-control-gutter: 0.5rem !default;
@@ -78,21 +78,7 @@ $custom-control-margin-top: null !default;
 $custom-control-min-height: $custom-control-indicator-size +
 	($custom-control-indicator-position-top * 2) !default;
 
-$custom-control: () !default;
-$custom-control: map-deep-merge(
-	(
-		cursor: $custom-control-cursor,
-		display: block,
-		margin-bottom: $custom-control-margin-bottom,
-		margin-top: $custom-control-margin-top,
-		min-height: $custom-control-min-height,
-		position: relative,
-		text-align: left,
-	),
-	$custom-control
-);
-
-// Custom Description
+// .custom-control-label
 
 /// @deprecated as of v2.19.0 use the Sass map `$custom-control-label` instead
 
@@ -135,6 +121,34 @@ $custom-control-label: map-deep-merge(
 		margin-bottom: 0,
 		position: static,
 		vertical-align: top,
+		before: (
+			background-color: $custom-control-indicator-bg,
+			border-color: $custom-control-indicator-border-color,
+			border-style: $custom-control-indicator-border-style,
+			border-width: $custom-control-indicator-border-width,
+			box-shadow:
+				clay-enable-shadows($custom-control-indicator-box-shadow),
+			content: '',
+			display: block,
+			float: left,
+			font-size: $custom-control-indicator-size,
+			height: $custom-control-indicator-size,
+			left: 0,
+			position: relative,
+			top: $custom-control-indicator-position-top,
+			transition: clay-enable-transitions($custom-forms-transition),
+			width: $custom-control-indicator-size,
+		),
+		after: (
+			background: no-repeat 50% / #{$custom-control-indicator-bg-size},
+			content: '',
+			display: block,
+			height: $custom-control-indicator-size,
+			left: 0,
+			position: absolute,
+			top: $custom-control-indicator-position-top,
+			width: $custom-control-indicator-size,
+		),
 	),
 	$custom-control-label
 );
@@ -146,9 +160,26 @@ $custom-control-label-disabled: map-deep-merge(
 	(
 		color: $custom-control-label-disabled-color,
 		cursor: $custom-control-description-disabled-cursor,
+		before: (
+			background-color: $custom-control-indicator-disabled-bg,
+			border-color: $custom-control-indicator-disabled-border-color,
+			box-shadow: none,
+		),
 	),
 	$custom-control-label-disabled
 );
+
+// label.custom-control-label
+
+$label-custom-control-label: () !default;
+$label-custom-control-label: map-deep-merge(
+	(
+		font-size: map-get($custom-control-label, font-size),
+	),
+	$label-custom-control-label
+);
+
+// .custom-control-label-text
 
 $custom-control-label-text: () !default;
 $custom-control-label-text: map-deep-merge(
@@ -158,12 +189,107 @@ $custom-control-label-text: map-deep-merge(
 	$custom-control-label-text
 );
 
+// .custom-control-label-text small, .custom-control-label-text .small
+
 $custom-control-label-text-small: () !default;
 $custom-control-label-text-small: map-deep-merge(
 	(
 		font-size: $custom-control-description-small-font-size,
 	),
 	$custom-control-label-text-small
+);
+
+$custom-control: () !default;
+$custom-control: map-deep-merge(
+	(
+		cursor: $custom-control-cursor,
+		display: block,
+		margin-bottom: $custom-control-margin-bottom,
+		margin-top: $custom-control-margin-top,
+		min-height: $custom-control-min-height,
+		position: relative,
+		text-align: left,
+		only-child: (
+			margin-bottom: 0,
+		),
+		label: (
+			cursor: map-get($custom-control-label, cursor),
+			display: inline,
+			font-size: $font-size-base,
+			margin-bottom: 0,
+		),
+	),
+	$custom-control
+);
+
+// .custom-control-input
+
+$custom-control-input: () !default;
+$custom-control-input: map-deep-merge(
+	(
+		cursor: $form-check-input-cursor,
+		height: $custom-control-indicator-size,
+		left: 0,
+		opacity: 0,
+		position: absolute,
+		top: $custom-control-indicator-position-top,
+		width: $custom-control-indicator-size,
+		z-index: 1,
+		focus: (
+			custom-control-label: (
+				before: (
+					border-color: $custom-control-indicator-focus-border-color,
+					box-shadow: $custom-control-indicator-focus-box-shadow,
+				),
+			),
+		),
+		active: (
+			custom-control-label: (
+				before: (
+					background-color: $custom-control-indicator-active-bg,
+					border-color: $custom-control-indicator-active-border-color,
+					box-shadow: $custom-control-indicator-active-box-shadow,
+					color: $custom-control-indicator-active-color,
+				),
+			),
+		),
+		disabled: (
+			custom-control-label: $custom-control-label-disabled,
+		),
+		checked: (
+			custom-control-label: (
+				before: (
+					background-color: $custom-control-indicator-checked-bg,
+					border-color: $custom-control-indicator-checked-border-color,
+					box-shadow:
+						clay-enable-shadows(
+							$custom-control-indicator-checked-box-shadow
+						),
+					color: $custom-control-indicator-checked-color,
+				),
+			),
+			active: (
+				custom-control-label: (
+					before: (
+						background-color:
+							$custom-control-indicator-checked-active-bg,
+						border-color:
+							$custom-control-indicator-checked-active-border-color,
+					),
+				),
+			),
+			disabled: (
+				cursor: $custom-control-indicator-disabled-cursor,
+				custom-control-label: (
+					before: (
+						background-color: $custom-control-indicator-disabled-bg,
+						box-shadow: none,
+					),
+				),
+			),
+		),
+	),
+	$custom-control-input
 );
 
 // Custom Control Primary
@@ -180,7 +306,9 @@ $custom-control-primary-label-text: map-deep-merge(
 
 $custom-checkbox-indicator-border-radius: $border-radius !default;
 
-$custom-checkbox-indicator-icon-checked: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'><path fill='#{$custom-control-indicator-checked-color}' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26l2.974 2.99L8 2.193z'/></svg>") !default;
+$custom-checkbox-indicator-icon-checked: clay-svg-url(
+	"<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'><path fill='#{$custom-control-indicator-checked-color}' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26l2.974 2.99L8 2.193z'/></svg>"
+) !default;
 $custom-checkbox-indicator-icon-checked-bg-size: null !default;
 
 $custom-checkbox-indicator-indeterminate-bg: $component-active-bg !default;
@@ -191,14 +319,85 @@ $custom-control-indicator-indeterminate-border-color: $custom-checkbox-indicator
 $custom-checkbox-indicator-indeterminate-box-shadow: none !default;
 $custom-checkbox-indicator-indeterminate-color: $custom-control-indicator-checked-color !default;
 
-$custom-checkbox-indicator-icon-indeterminate: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'><path stroke='#{$custom-checkbox-indicator-indeterminate-color}' d='M0 2h4'/></svg>") !default;
+$custom-checkbox-indicator-icon-indeterminate: clay-svg-url(
+	"<svg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'><path stroke='#{$custom-checkbox-indicator-indeterminate-color}' d='M0 2h4'/></svg>"
+) !default;
 $custom-checkbox-indicator-icon-indeterminate-bg-size: null !default;
+
+$custom-checkbox: () !default;
+$custom-checkbox: map-deep-merge(
+	(
+		custom-control-input: (
+			custom-control-label: (
+				before: (
+					border-radius:
+						clay-enable-rounded(
+							$custom-checkbox-indicator-border-radius
+						),
+				),
+			),
+			checked: (
+				custom-control-label: (
+					after: (
+						background-image:
+							escape-svg($custom-checkbox-indicator-icon-checked),
+						background-size:
+							$custom-checkbox-indicator-icon-checked-bg-size,
+					),
+				),
+				disabled: (
+					custom-control-label: (
+						before: (
+							background-color:
+								$custom-control-indicator-checked-disabled-bg,
+						),
+					),
+				),
+			),
+			indeterminate: (
+				custom-control-label: (
+					before: (
+						background-color:
+							$custom-checkbox-indicator-indeterminate-bg,
+						border-color:
+							$custom-control-indicator-indeterminate-border-color,
+						box-shadow:
+							clay-enable-shadows(
+								$custom-checkbox-indicator-indeterminate-box-shadow
+							),
+					),
+					after: (
+						background-image:
+							escape-svg(
+								$custom-checkbox-indicator-icon-indeterminate
+							),
+						background-size:
+							$custom-checkbox-indicator-icon-indeterminate-bg-size,
+					),
+				),
+				disabled: (
+					custom-control-label: (
+						before: (
+							background-color:
+								$custom-control-indicator-checked-disabled-bg,
+							border-color:
+								$custom-control-indicator-checked-disabled-border-color,
+						),
+					),
+				),
+			),
+		),
+	),
+	$custom-checkbox
+);
 
 // Custom Radio
 
 $custom-radio-indicator-border-radius: 50% !default;
 
-$custom-radio-indicator-icon-checked: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='-4 -4 8 8'><circle r='3' fill='#{$custom-control-indicator-checked-color}'/></svg>") !default;
+$custom-radio-indicator-icon-checked: clay-svg-url(
+	"<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='-4 -4 8 8'><circle r='3' fill='#{$custom-control-indicator-checked-color}'/></svg>"
+) !default;
 $custom-radio-indicator-icon-checked-bg-size: null !default;
 
 $custom-radio-indicator-disabled-border-color: null !default;
@@ -208,6 +407,48 @@ $custom-radio-indicator-disabled-border-color: null !default;
 $custom-radio-indicator-disabled-checked-border-color: null !default;
 $custom-radio-indicator-checked-disabled-border-color: $custom-radio-indicator-disabled-checked-border-color !default;
 
+$custom-radio: () !default;
+$custom-radio: map-deep-merge(
+	(
+		custom-control-input: (
+			custom-control-label: (
+				before: (
+					border-radius: $custom-radio-indicator-border-radius,
+				),
+			),
+			disabled: (
+				custom-control-label: (
+					before: (
+						border-color:
+							$custom-radio-indicator-disabled-border-color,
+					),
+				),
+			),
+			checked: (
+				custom-control-label: (
+					after: (
+						background-image:
+							escape-svg($custom-radio-indicator-icon-checked),
+						background-size:
+							$custom-radio-indicator-icon-checked-bg-size,
+					),
+				),
+				disabled: (
+					custom-control-label: (
+						before: (
+							background-color:
+								$custom-control-indicator-checked-disabled-bg,
+							border-color:
+								$custom-radio-indicator-checked-disabled-border-color,
+						),
+					),
+				),
+			),
+		),
+	),
+	$custom-radio
+);
+
 // Custom Switch
 
 /// @deprecated as of v3.x with no replacement
@@ -216,7 +457,7 @@ $custom-switch-width: $custom-control-indicator-size * 1.75 !default;
 
 /// @deprecated as of v3.x with no replacement
 
-$custom-switch-indicator-border-radius: $custom-control-indicator-size / 2 !default;
+$custom-switch-indicator-border-radius: $custom-control-indicator-size * 0.5 !default;
 
 /// @deprecated as of v3.x with no replacement
 
@@ -291,11 +532,13 @@ $custom-select-indicator-color: $gray-800 !default;
 
 /// @deprecated as of v3.x with no replacement
 
-$custom-select-indicator: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'><path fill='#{$custom-select-indicator-color}' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>") !default;
+$custom-select-indicator: clay-svg-url(
+	"<svg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'><path fill='#{$custom-select-indicator-color}' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>"
+) !default;
 
 /// @deprecated as of v3.x with no replacement
 
-$custom-select-background: escape-svg($custom-select-indicator) no-repeat right
+$custom-select-background: $custom-select-indicator no-repeat right
 	$custom-select-padding-x center / $custom-select-bg-size !default;
 
 // Custom Select Focus
@@ -339,8 +582,7 @@ $custom-select-feedback-icon-position: center right
 
 /// @deprecated as of v3.x with no replacement
 
-$custom-select-feedback-icon-size: $input-height-inner-half
-	$input-height-inner-half !default;
+$custom-select-feedback-icon-size: 18px 18px !default;
 
 // Custom Select Lg
 
@@ -439,7 +681,7 @@ $custom-range-thumb-focus-box-shadow-width: $input-focus-width !default;
 
 /// @deprecated as of v3.x with no replacement
 
-$custom-range-thumb-active-bg: lighten($component-active-bg, 35%) !default;
+$custom-range-thumb-active-bg: clay-lighten($component-active-bg, 35%) !default;
 
 /// @deprecated as of v3.x with no replacement
 
@@ -481,7 +723,7 @@ $custom-file-font-weight: $input-font-weight !default;
 
 /// @deprecated as of v3.x with no replacement
 
-$custom-file-height-inner: $input-height-inner !default;
+$custom-file-height-inner: 36px !default;
 
 /// @deprecated as of v3.x with no replacement
 
@@ -519,8 +761,23 @@ $custom-file-button-bg: $input-group-addon-bg !default;
 
 $custom-file-button-color: $custom-file-color !default;
 
-/// @deprecated as of v3.x with no replacement
+// .custom-file-label::after
 
-$custom-file-text: (
-	en: 'Browse',
-) !default;
+/// @deprecated as of v3.x with no replacement. See https://issues.liferay.com/browse/LPS-147457 and https://github.com/sass/sass/issues/1395
+
+$custom-file-label-after-content: unquote("'\\FEFF Browse'") !default;
+
+$custom-file-text: () !default;
+
+/// @deprecated as of v3.x with no replacement. See https://issues.liferay.com/browse/LPS-147457 and https://github.com/sass/sass/issues/1395
+
+$custom-file-text: map-deep-merge(
+	(
+		en: unquote("'\\FEFF Browse'"),
+	),
+	$custom-file-text
+);
+
+/// @deprecated as of v3.x with no replacement. See https://issues.liferay.com/browse/LPS-147457.
+
+$custom-file-text-data-browse: unquote("'\\FEFF' attr(data-browse)") !default;

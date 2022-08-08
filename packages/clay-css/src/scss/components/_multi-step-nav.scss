@@ -10,8 +10,9 @@
 
 .multi-step-indicator-label-bottom {
 	.multi-step-item {
-		padding-bottom: $multi-step-indicator-label-font-size *
-			$line-height-base;
+		padding-bottom: calc(
+			#{$multi-step-indicator-label-font-size} * #{$line-height-base}
+		);
 	}
 
 	.multi-step-indicator-label {
@@ -21,17 +22,19 @@
 
 .multi-step-indicator-label-top {
 	.multi-step-item {
-		padding-top: $multi-step-indicator-label-font-size * $line-height-base;
+		padding-top: calc(
+			#{$multi-step-indicator-label-font-size} * #{$line-height-base}
+		);
 	}
 
 	.multi-step-indicator-label {
-		bottom: $multi-step-icon-size + $multi-step-divider-height;
+		bottom: calc(#{$multi-step-icon-size} + #{$multi-step-divider-height});
 	}
 }
 
 .multi-step-title-center {
 	.multi-step-title {
-		margin-left: $multi-step-icon-size / 2;
+		margin-left: calc(#{$multi-step-icon-size} * 0.5);
 		max-width: $multi-step-title-max-width;
 		overflow: hidden;
 		position: relative;
@@ -59,7 +62,9 @@
 			@if ($multi-step-icon-active-bg-image) {
 				&[data-multi-step-icon] {
 					&:before {
-						content: normal;
+						// https://issues.liferay.com/browse/LPS-147457
+
+						content: none;
 					}
 				}
 			}
@@ -97,7 +102,9 @@
 
 				&[data-multi-step-icon] {
 					&:before {
-						content: normal;
+						// https://issues.liferay.com/browse/LPS-147457
+
+						content: none;
 					}
 				}
 
@@ -132,7 +139,9 @@
 			@if ($multi-step-icon-disabled-bg-image) {
 				&[data-multi-step-icon] {
 					&:before {
-						content: normal;
+						// https://issues.liferay.com/browse/LPS-147457
+
+						content: none;
 					}
 				}
 			}
@@ -170,7 +179,7 @@
 	background-color: $multi-step-divider-bg;
 	height: $multi-step-divider-height;
 	margin-left: $multi-step-icon-size;
-	margin-top: -$multi-step-divider-height;
+	margin-top: math-sign($multi-step-divider-height);
 	position: relative;
 	top: $multi-step-divider-top;
 }
@@ -241,8 +250,8 @@
 		text-decoration: $multi-step-icon-focus-text-decoration;
 	}
 
-	&[data-multi-step-icon]:before {
-		content: attr(data-multi-step-icon);
+	&[data-multi-step-icon]::before {
+		content: $data-multi-step-icon-before-content;
 		height: $multi-step-icon-size;
 		line-height: $multi-step-icon-size;
 		text-align: center;
@@ -337,9 +346,10 @@
 		.multi-step-item {
 			margin-bottom: 0;
 			min-width: $multi-step-icon-size;
-			padding-top: $multi-step-title-font-size +
-				$multi-step-title-margin-bottom +
-				($multi-step-divider-height / 2);
+			padding-top: calc(
+				#{$multi-step-title-font-size} + #{$multi-step-title-margin-bottom} +
+					(#{$multi-step-divider-height} * 0.5)
+			);
 		}
 
 		.multi-step-title {

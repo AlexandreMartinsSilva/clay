@@ -11,7 +11,7 @@ import {addMonths, range} from './Helpers';
 import Select, {ISelectOption} from './Select';
 import {IAriaLabels, IYears} from './types';
 
-interface IProps extends React.HTMLAttributes<HTMLDivElement> {
+type Props = {
 	ariaLabels: IAriaLabels;
 	currentMonth: Date;
 	disabled?: boolean;
@@ -25,9 +25,9 @@ interface IProps extends React.HTMLAttributes<HTMLDivElement> {
 	spritemap?: string;
 
 	years: IYears;
-}
+};
 
-const ClayDatePickerDateNavigation: React.FunctionComponent<IProps> = ({
+const ClayDatePickerDateNavigation = ({
 	ariaLabels,
 	currentMonth,
 	disabled,
@@ -36,7 +36,7 @@ const ClayDatePickerDateNavigation: React.FunctionComponent<IProps> = ({
 	onMonthChange,
 	spritemap,
 	years,
-}) => {
+}: Props) => {
 	const memoizedYears: Array<ISelectOption> = React.useMemo(
 		() =>
 			range(years).map((elem) => {
@@ -104,7 +104,7 @@ const ClayDatePickerDateNavigation: React.FunctionComponent<IProps> = ({
 					<Select
 						disabled={disabled}
 						name="month"
-						onChange={handleFormChange}
+						onChange={() => handleFormChange()}
 						options={memoizedMonths}
 						ref={monthSelectorRef}
 						testId="month-select"
@@ -115,7 +115,7 @@ const ClayDatePickerDateNavigation: React.FunctionComponent<IProps> = ({
 					<Select
 						disabled={disabled}
 						name="year"
-						onChange={handleFormChange}
+						onChange={() => handleFormChange()}
 						options={memoizedYears}
 						ref={yearSelectorRef}
 						testId="year-select"

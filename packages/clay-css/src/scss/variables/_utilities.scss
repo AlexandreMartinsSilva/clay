@@ -1,5 +1,27 @@
 $bg-checkered-fg: $gray-200 !default;
+
+// .inline-scroller
+
 $inline-scroller-max-height: 125px !default;
+
+$inline-scroller: () !default;
+$inline-scroller: map-deep-merge(
+	(
+		-webkit-overflow-scrolling: touch,
+		list-style: none,
+		margin: 0,
+		max-height: $inline-scroller-max-height,
+		overflow: auto,
+		padding: 0,
+		focus: (
+			outline: 0,
+		),
+		focus-visible: (
+			box-shadow: $component-focus-box-shadow,
+		)
+	),
+	$inline-scroller
+);
 
 // Autofit Row
 
@@ -23,7 +45,7 @@ $autofit-padded-no-gutters-sm: map-merge(
 // Close
 
 $close-color: $black !default;
-$close-font-size: $font-size-base * 1.5 !default;
+$close-font-size: calc(#{$font-size-base} * 1.5) !default;
 $close-font-weight: $font-weight-bold !default;
 $close-text-shadow: 0 1px 0 $white !default;
 
@@ -33,8 +55,8 @@ $close: map-deep-merge(
 		align-items: center,
 		appearance: none,
 		background-color: transparent,
-		border-radius: $btn-border-radius-sm,
-		border-width: 0,
+		border-radius: $border-radius-sm,
+		border-width: 0px,
 		color: $close-color,
 		cursor: $link-cursor,
 		display: inline-flex,
@@ -47,7 +69,10 @@ $close: map-deep-merge(
 		padding: 0,
 		text-align: center,
 		text-shadow: $close-text-shadow,
-		transition: $btn-transition,
+		transition: #{color 0.15s ease-in-out,
+		background-color 0.15s ease-in-out,
+		border-color 0.15s ease-in-out,
+		box-shadow 0.15s ease-in-out},
 		width: 2rem,
 		hover: (
 			color: $close-color,
@@ -55,6 +80,8 @@ $close: map-deep-merge(
 			text-decoration: none,
 		),
 		focus: (
+			box-shadow: $input-btn-focus-box-shadow,
+			outline: 0,
 			opacity: 0.75,
 		),
 		disabled: (
@@ -62,13 +89,13 @@ $close: map-deep-merge(
 			cursor: $disabled-cursor,
 			opacity: 0.25,
 			outline: 0,
+			active: (
+				pointer-events: none,
+			),
 		),
-		disabled-active: (
-			pointer-events: none,
+		lexicon-icon: (
+			margin-top: 0,
 		),
-		btn-focus-box-shadow: $input-btn-focus-box-shadow,
-		btn-focus-outline: 0,
-		lexicon-icon-margin-top: 0,
 	),
 	$close
 );
@@ -122,7 +149,28 @@ $heading-text-margin-top: auto !default;
 $inline-item-lexicon-icon-margin-top: -0.1em !default;
 $inline-item-spacer-x: 0.5rem !default; // 8px
 
-$inline-item-loading-animation-font-size: 1.25em !default;
+$inline-item-loading-animation-font-size: null !default;
+
+$inline-item: () !default;
+$inline-item: map-deep-merge(
+	(
+		align-items: center,
+		display: inline-flex,
+		vertical-align: middle,
+		inline-item: (
+			display: inline,
+		),
+		lexicon-icon: (
+			margin-top: $inline-item-lexicon-icon-margin-top,
+		),
+		loading-animation: (
+			font-size: $inline-item-loading-animation-font-size,
+		),
+	),
+	$inline-item
+);
+
+// Page Header
 
 $page-header-bg: $gray-200 !default;
 
@@ -134,49 +182,49 @@ $bg-theme-colors: map-deep-merge(
 		'primary': (
 			background-color: $primary !important,
 			hover: (
-				background-color: darken($primary, 10%) !important,
+				background-color: clay-darken($primary, 10%) !important,
 			),
 		),
 		'secondary': (
 			background-color: $secondary !important,
 			hover: (
-				background-color: darken($secondary, 10%) !important,
+				background-color: clay-darken($secondary, 10%) !important,
 			),
 		),
 		'success': (
 			background-color: $success !important,
 			hover: (
-				background-color: darken($success, 10%) !important,
+				background-color: clay-darken($success, 10%) !important,
 			),
 		),
 		'info': (
 			background-color: $info !important,
 			hover: (
-				background-color: darken($info, 10%) !important,
+				background-color: clay-darken($info, 10%) !important,
 			),
 		),
 		'warning': (
 			background-color: $warning !important,
 			hover: (
-				background-color: darken($warning, 10%) !important,
+				background-color: clay-darken($warning, 10%) !important,
 			),
 		),
 		'danger': (
 			background-color: $danger !important,
 			hover: (
-				background-color: darken($danger, 10%) !important,
+				background-color: clay-darken($danger, 10%) !important,
 			),
 		),
 		'light': (
 			background-color: $light !important,
 			hover: (
-				background-color: darken($light, 10%) !important,
+				background-color: clay-darken($light, 10%) !important,
 			),
 		),
 		'dark': (
 			background-color: $dark !important,
 			hover: (
-				background-color: darken($dark, 10%) !important,
+				background-color: clay-darken($dark, 10%) !important,
 			),
 		),
 		'white': (
@@ -196,7 +244,7 @@ $bg-gradient-theme-colors: map-deep-merge(
 			background: $primary
 				linear-gradient(
 					180deg,
-					mix(clay-get-fallback($body-bg), $primary, 15%),
+					clay-mix($body-bg, $primary, 15%),
 					$primary
 				)
 				repeat-x !important,
@@ -205,7 +253,7 @@ $bg-gradient-theme-colors: map-deep-merge(
 			background: $secondary
 				linear-gradient(
 					180deg,
-					mix(clay-get-fallback($body-bg), $secondary, 15%),
+					clay-mix($body-bg, $secondary, 15%),
 					$secondary
 				)
 				repeat-x !important,
@@ -214,25 +262,21 @@ $bg-gradient-theme-colors: map-deep-merge(
 			background: $success
 				linear-gradient(
 					180deg,
-					mix(clay-get-fallback($body-bg), $success, 15%),
+					clay-clay-mix($body-bg, $success, 15%),
 					$success
 				)
 				repeat-x !important,
 		),
 		'info': (
 			background: $info
-				linear-gradient(
-					180deg,
-					mix(clay-get-fallback($body-bg), $info, 15%),
-					$info
-				)
+				linear-gradient(180deg, clay-mix($body-bg, $info, 15%), $info)
 				repeat-x !important,
 		),
 		'warning': (
 			background: $warning
 				linear-gradient(
 					180deg,
-					mix(clay-get-fallback($body-bg), $warning, 15%),
+					clay-mix($body-bg, $warning, 15%),
 					$warning
 				)
 				repeat-x !important,
@@ -241,27 +285,19 @@ $bg-gradient-theme-colors: map-deep-merge(
 			background: $danger
 				linear-gradient(
 					180deg,
-					mix(clay-get-fallback($body-bg), $danger, 15%),
+					clay-mix($body-bg, $danger, 15%),
 					$danger
 				)
 				repeat-x !important,
 		),
 		'light': (
 			background: $light
-				linear-gradient(
-					180deg,
-					mix(clay-get-fallback($body-bg), $light, 15%),
-					$light
-				)
+				linear-gradient(180deg, clay-mix($body-bg, $light, 15%), $light)
 				repeat-x !important,
 		),
 		'dark': (
 			background: $dark
-				linear-gradient(
-					180deg,
-					mix(clay-get-fallback($body-bg), $dark, 15%),
-					$dark
-				)
+				linear-gradient(180deg, clay-mix($body-bg, $dark, 15%), $dark)
 				repeat-x !important,
 		),
 	),
@@ -317,6 +353,48 @@ $overflows: auto, hidden !default;
 
 $positions: static, relative, absolute, fixed, sticky !default;
 
+// Font Sizes
+
+$font-sizes: () !default;
+$font-sizes: map-deep-merge(
+	(
+		text-1: (
+			font-size: map-get($font-scale, 1),
+		),
+		text-2: (
+			font-size: map-get($font-scale, 2),
+		),
+		text-3: (
+			font-size: map-get($font-scale, 3),
+		),
+		text-4: (
+			font-size: map-get($font-scale, 4),
+		),
+		text-5: (
+			font-size: map-get($font-scale, 5),
+		),
+		text-6: (
+			font-size: map-get($font-scale, 6),
+		),
+		text-7: (
+			font-size: map-get($font-scale, 7),
+		),
+		text-8: (
+			font-size: map-get($font-scale, 8),
+		),
+		text-9: (
+			font-size: map-get($font-scale, 9),
+		),
+		text-10: (
+			font-size: map-get($font-scale, 10),
+		),
+		text-11: (
+			font-size: map-get($font-scale, 11),
+		),
+	),
+	$font-sizes
+);
+
 // Text
 
 $text-theme-colors: () !default;
@@ -326,7 +404,10 @@ $text-theme-colors: map-deep-merge(
 			color: $primary !important,
 			hover: (
 				color:
-					darken($primary, $emphasized-link-hover-darken-percentage)
+					clay-darken(
+						$primary,
+						$emphasized-link-hover-darken-percentage
+					)
 					!important,
 			),
 		),
@@ -334,7 +415,10 @@ $text-theme-colors: map-deep-merge(
 			color: $secondary !important,
 			hover: (
 				color:
-					darken($secondary, $emphasized-link-hover-darken-percentage)
+					clay-darken(
+						$secondary,
+						$emphasized-link-hover-darken-percentage
+					)
 					!important,
 			),
 		),
@@ -342,14 +426,18 @@ $text-theme-colors: map-deep-merge(
 			color: $success !important,
 			hover: (
 				color:
-					darken($success, $emphasized-link-hover-darken-percentage)
+					clay-darken(
+						$success,
+						$emphasized-link-hover-darken-percentage
+					)
 					!important,
 			),
 		),
 		'info': (
 			color: $info !important,
 			hover: (
-				color: darken($info, $emphasized-link-hover-darken-percentage)
+				color:
+					clay-darken($info, $emphasized-link-hover-darken-percentage)
 					!important,
 			),
 		),
@@ -357,28 +445,40 @@ $text-theme-colors: map-deep-merge(
 			color: $warning !important,
 			hover: (
 				color:
-					darken($warning, $emphasized-link-hover-darken-percentage)
+					clay-darken(
+						$warning,
+						$emphasized-link-hover-darken-percentage
+					)
 					!important,
 			),
 		),
 		'danger': (
 			color: $danger !important,
 			hover: (
-				color: darken($danger, $emphasized-link-hover-darken-percentage)
+				color:
+					clay-darken(
+						$danger,
+						$emphasized-link-hover-darken-percentage
+					)
 					!important,
 			),
 		),
 		'light': (
 			color: $light !important,
 			hover: (
-				color: darken($light, $emphasized-link-hover-darken-percentage)
+				color:
+					clay-darken(
+						$light,
+						$emphasized-link-hover-darken-percentage
+					)
 					!important,
 			),
 		),
 		'dark': (
 			color: $dark !important,
 			hover: (
-				color: darken($dark, $emphasized-link-hover-darken-percentage)
+				color:
+					clay-darken($dark, $emphasized-link-hover-darken-percentage)
 					!important,
 			),
 		),

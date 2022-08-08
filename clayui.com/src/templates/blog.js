@@ -10,7 +10,7 @@ import Helmet from 'react-helmet';
 import LayoutNav from '../components/LayoutNav';
 import Sidebar from '../components/Sidebar';
 
-export default ({data, location}) => {
+export default function Blog({data, location}) {
 	const {allMarkdownRemark, markdownRemark} = data;
 	const {excerpt, frontmatter, html, timeToRead} = markdownRemark;
 	const title = `${frontmatter.title} - Clay`;
@@ -43,9 +43,9 @@ export default ({data, location}) => {
 						<div className="col-xl sidebar-offset">
 							<LayoutNav pathname={location.pathname} />
 							<div className="clay-blog-content">
-								<header>
-									<div className="clay-site-container container-fluid">
-										<h1 className="blog-title">
+								<div className="clay-site-container container-fluid">
+									<header>
+										<h1 className="blog-title text-10">
 											{frontmatter.title}
 										</h1>
 										<span className="blog-date">
@@ -72,20 +72,12 @@ export default ({data, location}) => {
 												)
 											)}
 										</span>
-									</div>
-								</header>
-								<div className="clay-site-container container-fluid">
-									<div className="row">
-										<div className="col-md-12">
-											<article>
-												<div
-													dangerouslySetInnerHTML={{
-														__html: html,
-													}}
-												/>
-											</article>
-										</div>
-									</div>
+									</header>
+									<article
+										dangerouslySetInnerHTML={{
+											__html: html,
+										}}
+									/>
 								</div>
 							</div>
 						</div>
@@ -94,7 +86,7 @@ export default ({data, location}) => {
 			</main>
 		</div>
 	);
-};
+}
 
 const addString = (list, string) =>
 	list.push(<span key={`${list.length}-${string}`}>{string}</span>);

@@ -3,6 +3,190 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.68.0](https://github.com/liferay/clay/compare/v3.67.0...v3.68.0) (2022-08-01)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.67.0](https://github.com/liferay/clay/compare/v3.66.0...v3.67.0) (2022-07-25)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.66.0](https://github.com/matuzalemsteles/clay/compare/v3.65.2...v3.66.0) (2022-07-20)
+
+**Note:** Version bump only for package clayui.com
+
+## [3.65.2](https://github.com/liferay/clay/compare/v3.65.1...v3.65.2) (2022-07-19)
+
+**Note:** Version bump only for package clayui.com
+
+## [3.65.1](https://github.com/liferay/clay/compare/v3.65.0...v3.65.1) (2022-07-11)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.65.0](https://github.com/liferay/clay/compare/v3.64.0...v3.65.0) (2022-07-11)
+
+### Bug Fixes
+
+-   **clayui.com:** fix clipboard error in examples ([3ad788b](https://github.com/liferay/clay/commit/3ad788b5ae3a34ae1375097c371b58e629d3490c))
+
+# [3.64.0](https://github.com/liferay/clay/compare/v3.63.0...v3.64.0) (2022-07-04)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.63.0](https://github.com/liferay/clay/compare/v3.62.0...v3.63.0) (2022-06-27)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.62.0](https://github.com/liferay/clay/compare/v3.61.0...v3.62.0) (2022-06-20)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.61.0](https://github.com/liferay/clay/compare/v3.60.1...v3.61.0) (2022-06-13)
+
+**Note:** Version bump only for package clayui.com
+
+## [3.60.1](https://github.com/liferay/clay/compare/v3.60.0...v3.60.1) (2022-06-08)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.60.0](https://github.com/liferay/clay/compare/v3.59.0...v3.60.0) (2022-06-06)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.59.0](https://github.com/liferay/clay/compare/v3.58.1...v3.59.0) (2022-05-30)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.58.0](https://github.com/liferay/clay/compare/v3.57.0...v3.58.0) (2022-05-23)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.57.0](https://github.com/liferay/clay/compare/v3.56.0...v3.57.0) (2022-05-16)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.56.0](https://github.com/liferay/clay/compare/v3.55.0...v3.56.0) (2022-05-09)
+
+### Features
+
+-   **clayui.com:** add deprecated prop badge to doc ([0d55bdf](https://github.com/liferay/clay/commit/0d55bdfc4f56d584d2838645476e604d520889d6))
+
+# [3.55.0](https://github.com/liferay/clay/compare/v3.54.0...v3.55.0) (2022-05-02)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.54.0](https://github.com/liferay/clay/compare/v3.53.0...v3.54.0) (2022-04-25)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.53.0](https://github.com/liferay/clay/compare/v3.52.0...v3.53.0) (2022-04-12)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.52.0](https://github.com/liferay/clay/compare/v3.51.0...v3.52.0) (2022-04-04)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.51.0](https://github.com/liferay/clay/compare/v3.50.0...v3.51.0) (2022-03-28)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.50.0](https://github.com/liferay/clay/compare/v3.49.0...v3.50.0) (2022-03-21)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.49.0](https://github.com/julien/clay/compare/v3.48.0...v3.49.0) (2022-03-15)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.48.0](https://github.com/julien/clay/compare/v3.47.0...v3.48.0) (2022-03-07)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.47.0](https://github.com/julien/clay/compare/v3.46.0...v3.47.0) (2022-02-23)
+
+### Bug Fixes
+
+-   **clayui.com:** nav-toc is too wide, overlays examples ([b4bd694](https://github.com/julien/clay/commit/b4bd694bd84fbc701b00258464d608e86104a404))
+-   **clayui.com:** nav-toc-absolute is too wide, overlays examples ([817f63c](https://github.com/julien/clay/commit/817f63c681e150ea325705359d2f2b679385537e))
+
+# [3.46.0](https://github.com/matuzalemsteles/clay/compare/v3.45.1...v3.46.0) (2022-02-09)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.45.0](https://github.com/matuzalemsteles/clay/compare/v3.44.2...v3.45.0) (2022-02-01)
+
+**Note:** Version bump only for package clayui.com
+
+## [3.44.2](https://github.com/julien/clay/compare/v3.44.1...v3.44.2) (2022-01-12)
+
+**Note:** Version bump only for package clayui.com
+
+## [3.44.1](https://github.com/julien/clay/compare/v3.44.0...v3.44.1) (2022-01-11)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.44.0](https://github.com/julien/clay/compare/v3.43.1...v3.44.0) (2022-01-10)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.43.0](https://github.com/julien/clay/compare/v3.42.0...v3.43.0) (2021-12-29)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.42.0](https://github.com/liferay/clay/compare/v3.41.0...v3.42.0) (2021-12-15)
+
+### Bug Fixes
+
+-   **@clayui/css:** replace filter icon ([8231dae](https://github.com/liferay/clay/commit/8231daec61ec59df1ca25f3fcd56320ef582d214)), closes [#4490](https://github.com/liferay/clay/issues/4490)
+-   **clayui.com:** updates Google Analytics ID ([f6976f4](https://github.com/liferay/clay/commit/f6976f40642a35c4d24ef11ba8b31e633af9eb40))
+
+# [3.41.0](https://github.com/matuzalemsteles/clay/compare/v3.40.1...v3.41.0) (2021-12-02)
+
+**Note:** Version bump only for package clayui.com
+
+## [3.40.1](https://github.com/matuzalemsteles/clay/compare/v3.40.0...v3.40.1) (2021-11-17)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.40.0](https://github.com/matuzalemsteles/clay/compare/v3.39.0...v3.40.0) (2021-11-17)
+
+**Note:** Version bump only for package clayui.com
+
+# [3.39.0](https://github.com/matuzalemsteles/clay/compare/v3.38.0...v3.39.0) (2021-10-29)
+
+### Bug Fixes
+
+-   fixes error when starting `yarn develop` command of the clayui.com ([fa0d8c0](https://github.com/matuzalemsteles/clay/commit/fa0d8c06498db8d41fc025f6ff6ef912dc97228e))
+
+### Features
+
+-   **clayui.com:** add `heading`, `maps`, `order-ascending`, `order-descending` and `geolocation` SVG icons ([a34f3be](https://github.com/matuzalemsteles/clay/commit/a34f3be7ec089289070b407aab180216843eef69))
+
+# [3.38.0](https://github.com/matuzalemsteles/clay/compare/v3.37.0...v3.38.0) (2021-10-22)
+
+### Bug Fixes
+
+-   **@clayui/css:** remove `node-sass` and add new build file ([80f6ec2](https://github.com/matuzalemsteles/clay/commit/80f6ec2457b290865f5cf0c58f3dedb2bf822085))
+
+### Features
+
+-   **clayui.com:** update gatsby and its dependencies to v3.14 ([bf79081](https://github.com/matuzalemsteles/clay/commit/bf79081ef4af91def3982f365f584665e44eddf7))
+
+# [4.0.0](https://github.com/julien/clay/compare/v3.36.0...v4.0.0) (2021-10-06)
+
+### Bug Fixes
+
+-   **clayui.com:** add missing authors ([dc1b787](https://github.com/julien/clay/commit/dc1b787))
+
+# [3.36.0](https://github.com/julien/clay/compare/v3.35.3...v3.36.0) (2021-09-23)
+
+**Note:** Version bump only for package clayui.com
+
+## [3.35.3](https://github.com/julien/clay/compare/v3.35.2...v3.35.3) (2021-09-09)
+
+**Note:** Version bump only for package clayui.com
+
 ## [3.35.2](https://github.com/matuzalemsteles/clay/compare/v3.35.1...v3.35.2) (2021-08-30)
 
 **Note:** Version bump only for package clayui.com

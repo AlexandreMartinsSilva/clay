@@ -4,19 +4,30 @@
  */
 
 import ClayIcon from '@clayui/icon';
-import {getEllipsisItems} from '@clayui/shared';
+import {
+	InternalDispatch,
+	getEllipsisItems,
+	useInternalState,
+} from '@clayui/shared';
 import React from 'react';
 
-import type {IPaginationEllipsisProps} from './Ellipsis';
 import Pagination from './Pagination';
+
+import type {IPaginationEllipsisProps} from './Ellipsis';
 
 const ELLIPSIS_BUFFER = 2;
 
 interface IProps extends React.ComponentProps<typeof Pagination> {
 	/**
-	 * The page that is currently active. The first page is `1`.
+	 * Sets the currently active page (controlled).
 	 */
-	activePage: number;
+	active?: number;
+
+	/**
+	 * The page that is currently active. The first page is `1`.
+	 * @deprecated since v3.49.0 - use `active` instead.
+	 */
+	activePage?: number;
 
 	/**
 	 * Sets the default DropDown position of the component. The component
@@ -39,6 +50,16 @@ interface IProps extends React.ComponentProps<typeof Pagination> {
 	ellipsisBuffer?: number;
 
 	/**
+	 * Sets the default active page (uncontrolled).
+	 */
+	defaultActive?: number;
+
+	/**
+	 * Flag to disable ellipsis button
+	 */
+	disableEllipsis?: boolean;
+
+	/**
 	 * The page numbers that should be disabled. For example, `[2,5,6]`.
 	 */
 	disabledPages?: Array<number>;
@@ -49,10 +70,17 @@ interface IProps extends React.ComponentProps<typeof Pagination> {
 	hrefConstructor?: (page?: number) => string;
 
 	/**
+	 * Callback called when the state of the active page changes (controlled).
+	 * This is only used if an href is not provided.
+	 */
+	onActiveChange?: InternalDispatch<number>;
+
+	/**
 	 * Callback for when the active page changes. This is only used if
 	 * an href is not provided.
+	 * @deprecated since v3.49.0 - use `onActiveChange` instead.
 	 */
-	onPageChange?: (page?: number) => void;
+	onPageChange?: InternalDispatch<number>;
 
 	/**
 	 * The total number of pages in the pagination list.
@@ -68,15 +96,19 @@ interface IProps extends React.ComponentProps<typeof Pagination> {
 const ClayPaginationWithBasicItems = React.forwardRef<HTMLUListElement, IProps>(
 	(
 		{
+			active,
 			activePage,
 			alignmentPosition,
 			ariaLabels = {
 				next: 'Next',
 				previous: 'Previous',
 			},
+			defaultActive,
 			disabledPages = [],
+			disableEllipsis = false,
 			ellipsisBuffer = ELLIPSIS_BUFFER,
 			hrefConstructor,
+			onActiveChange,
 			onPageChange,
 			spritemap,
 			totalPages,
@@ -84,10 +116,19 @@ const ClayPaginationWithBasicItems = React.forwardRef<HTMLUListElement, IProps>(
 		}: IProps,
 		ref
 	) => {
-		const previousPage = activePage - 1;
+		const [internalActive, setActive] = useInternalState({
+			defaultName: 'defaultActive',
+			defaultValue: defaultActive,
+			handleName: 'onActiveChange',
+			name: 'value',
+			onChange: onActiveChange ?? onPageChange,
+			value: typeof active === 'undefined' ? activePage : active,
+		});
+
+		const previousPage = internalActive - 1;
 		const previousHref = hrefConstructor && hrefConstructor(previousPage);
 
-		const nextPage = activePage + 1;
+		const nextPage = internalActive + 1;
 		const nextHref = hrefConstructor && hrefConstructor(nextPage);
 
 		const pages = Array(totalPages)
@@ -99,9 +140,9 @@ const ClayPaginationWithBasicItems = React.forwardRef<HTMLUListElement, IProps>(
 				<Pagination.Item
 					aria-label={ariaLabels.previous}
 					data-testid="prevArrow"
-					disabled={activePage === 1}
+					disabled={internalActive === 1}
 					href={previousHref}
-					onClick={() => onPageChange && onPageChange(previousPage)}
+					onClick={() => setActive(previousPage)}
 				>
 					<ClayIcon spritemap={spritemap} symbol="angle-left" />
 				</Pagination.Item>
@@ -112,14 +153,15 @@ const ClayPaginationWithBasicItems = React.forwardRef<HTMLUListElement, IProps>(
 								EllipsisComponent: Pagination.Ellipsis,
 								ellipsisProps: {
 									alignmentPosition,
+									disabled: disableEllipsis,
 									disabledPages,
 									hrefConstructor,
-									onPageChange,
+									onPageChange: setActive,
 								},
 								items: pages,
 							},
 							ellipsisBuffer,
-							activePage - 1
+							internalActive - 1
 					  )
 					: pages
 				).map((page: number | JSX.Element | Object, index: number) =>
@@ -127,16 +169,14 @@ const ClayPaginationWithBasicItems = React.forwardRef<HTMLUListElement, IProps>(
 						React.cloneElement(page, {key: `ellipsis${index}`})
 					) : (
 						<Pagination.Item
-							active={page === activePage}
+							active={page === internalActive}
 							disabled={disabledPages.includes(page as number)}
 							href={
 								hrefConstructor &&
 								hrefConstructor(page as number)
 							}
 							key={page as number}
-							onClick={() =>
-								onPageChange && onPageChange(page as number)
-							}
+							onClick={() => setActive(page as number)}
 						>
 							{page}
 						</Pagination.Item>
@@ -146,9 +186,9 @@ const ClayPaginationWithBasicItems = React.forwardRef<HTMLUListElement, IProps>(
 				<Pagination.Item
 					aria-label={ariaLabels.next}
 					data-testid="nextArrow"
-					disabled={activePage === totalPages}
+					disabled={internalActive === totalPages}
 					href={nextHref}
-					onClick={() => onPageChange && onPageChange(nextPage)}
+					onClick={() => setActive(nextPage)}
 				>
 					<ClayIcon spritemap={spritemap} symbol="angle-right" />
 				</Pagination.Item>

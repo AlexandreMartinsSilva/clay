@@ -3,6 +3,142 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.68.0](https://github.com/liferay/clay/compare/v3.67.0...v3.68.0) (2022-08-01)
+
+### Bug Fixes
+
+-   **@clayui/drop-down:** avoid adding focus event when drop down is closed ([5e68f54](https://github.com/liferay/clay/commit/5e68f54494efce03e1f42c85552fbf39afe0634a))
+-   **@clayui/drop-down:** move focus to button when closing dropdown ([fde657e](https://github.com/liferay/clay/commit/fde657eba339e7514766bdb4a4e901ab106364ac))
+
+### Features
+
+-   **@clayui/drop-down:** Adds the new API in DropDown to close the dropdown when clicking on the item ([6e4e133](https://github.com/liferay/clay/commit/6e4e1331328c90d83efdd5f8d9208ebbcef3b8e7))
+
+# [3.67.0](https://github.com/liferay/clay/compare/v3.66.0...v3.67.0) (2022-07-25)
+
+**Note:** Version bump only for package @clayui/drop-down
+
+# [3.66.0](https://github.com/liferay/clay/compare/v3.65.2...v3.66.0) (2022-07-20)
+
+### Features
+
+-   **@clayui/drop-down:** add new `roleItem` property to set item role ([de82351](https://github.com/liferay/clay/commit/de823511b861a5022e7cc902de043211d5180ede))
+
+## [3.65.2](https://github.com/liferay/clay/compare/v3.65.1...v3.65.2) (2022-07-19)
+
+### Bug Fixes
+
+-   **@clayui/autocomplete:** fix error of `alignment By Viewport` not positioning properly ([4ea771b](https://github.com/liferay/clay/commit/4ea771b2726a0ba469edca4d0e7548cbeb74d01e))
+-   **@clayui/drop-down:** fixes error when losing focus using arrow keys in Drilldown and improves accessibility ([15aeddf](https://github.com/liferay/clay/commit/15aeddf99aff6799639ecdb4aaecad966cb9ae3e))
+-   **@clayui/drop-down:** improve the accessibility of `DropDownWithItems` ([68eec9e](https://github.com/liferay/clay/commit/68eec9e2f2adb338b87d06d810f01126ca266d10))
+-   **@clayui/drop-down:** improves DropDown accessibility ([e420a85](https://github.com/liferay/clay/commit/e420a850f657c027a34c79ee8e13a21df1bce0eb))
+
+## [3.65.1](https://github.com/liferay/clay/compare/v3.65.0...v3.65.1) (2022-07-11)
+
+**Note:** Version bump only for package @clayui/drop-down
+
+# [3.65.0](https://github.com/liferay/clay/compare/v3.64.0...v3.65.0) (2022-07-11)
+
+### Bug Fixes
+
+-   **@clayui/drop-down:** Pass role as a parameter to items in dropdown ([a5cfd72](https://github.com/liferay/clay/commit/a5cfd72608beddc0b0d29ab3d44163f57b5d9a01))
+
+# [3.64.0](https://github.com/liferay/clay/compare/v3.63.0...v3.64.0) (2022-07-04)
+
+### Features
+
+-   **@clayui/drop-down:** Allow setting a default selected value for the radiogroup ([f159071](https://github.com/liferay/clay/commit/f159071adaf2b092152f6c35392dae9387be5797))
+
+# [3.62.0](https://github.com/liferay/clay/compare/v3.61.0...v3.62.0) (2022-06-20)
+
+### Bug Fixes
+
+-   **@clayui/drop-down:** fix bug of calling setActive method when the menu is invisible ([1e3efcf](https://github.com/liferay/clay/commit/1e3efcfcd126f44c0f98547fe9416801d9da5641))
+
+# [3.58.0](https://github.com/liferay/clay/compare/v3.57.0...v3.58.0) (2022-05-23)
+
+**Note:** Version bump only for package @clayui/drop-down
+
+# [3.56.0](https://github.com/liferay/clay/compare/v3.55.0...v3.56.0) (2022-05-09)
+
+**Note:** Version bump only for package @clayui/drop-down
+
+# [3.55.0](https://github.com/liferay/clay/compare/v3.54.0...v3.55.0) (2022-05-02)
+
+### Features
+
+-   **@clayui/drop-down:** standardize the controlled and uncontrolled component behavior to `active` prop ([49afcdb](https://github.com/liferay/clay/commit/49afcdb4534db2d14bb993cf5a75b9c36381981e))
+
+# [3.52.0](https://github.com/liferay/clay/compare/v3.51.0...v3.52.0) (2022-04-04)
+
+### Bug Fixes
+
+-   **@clayui/drop-down:** fix contextual menu error not rendering icons without spaces ([a115add](https://github.com/liferay/clay/commit/a115add1d60ff61012013932cbff42af31aff70e))
+
+# [3.49.0](https://github.com/liferay/clay/compare/v3.48.0...v3.49.0) (2022-03-15)
+
+### Features
+
+-   **@clayui/drop-down:** add new prop to align Menu in viewport ([1c4f19b](https://github.com/liferay/clay/commit/1c4f19b25c34f6ffb9c2c7b9a99732e2a82d5eb5))
+-   **@clayui/drop-down:** make it possible to render the menu lazily ([1e4e565](https://github.com/liferay/clay/commit/1e4e5655503645358245a200e72c8ca711f72956))
+
+# [3.48.0](https://github.com/liferay/clay/compare/v3.47.0...v3.48.0) (2022-03-07)
+
+### Features
+
+-   **@clayui/drop-down:** Render Menu only after trigger is clicked the first time ([1d90d45](https://github.com/liferay/clay/commit/1d90d454d9b2d242dd2d491e4525e815553e9fa3))
+-   **@clayui/drop-down:** Update tests ([ab564dd](https://github.com/liferay/clay/commit/ab564ddb95de1e01cb690cd458e5ac3aad634946))
+
+# [3.47.0](https://github.com/liferay/clay/compare/v3.46.0...v3.47.0) (2022-02-23)
+
+**Note:** Version bump only for package @clayui/drop-down
+
+# [3.45.0](https://github.com/liferay/clay/compare/v3.44.2...v3.45.0) (2022-02-01)
+
+**Note:** Version bump only for package @clayui/drop-down
+
+# [3.43.0](https://github.com/liferay/clay/compare/v3.42.0...v3.43.0) (2021-12-29)
+
+### Features
+
+-   **@clayui/drop-down:** adds `shrink` modifier support to DropDown.Menu ([e770a1f](https://github.com/liferay/clay/commit/e770a1f47f53705e94aec9ba0abbf2a079fe3bbf))
+
+# [3.42.0](https://github.com/liferay/clay/compare/v3.41.0...v3.42.0) (2021-12-15)
+
+**Note:** Version bump only for package @clayui/drop-down
+
+# [3.41.0](https://github.com/liferay/clay/compare/v3.40.1...v3.41.0) (2021-12-02)
+
+**Note:** Version bump only for package @clayui/drop-down
+
+# [3.40.0](https://github.com/liferay/clay/compare/v3.39.0...v3.40.0) (2021-11-17)
+
+### Bug Fixes
+
+-   **@clayui/drop-down:** Provide a default on submit function to avoid form navigation ([60a37aa](https://github.com/liferay/clay/commit/60a37aad7b58e7525c7fb681bcb01cb0f3106adf))
+
+# [3.39.0](https://github.com/liferay/clay/compare/v3.38.0...v3.39.0) (2021-10-29)
+
+**Note:** Version bump only for package @clayui/drop-down
+
+# [3.38.0](https://github.com/liferay/clay/compare/v3.37.0...v3.38.0) (2021-10-22)
+
+**Note:** Version bump only for package @clayui/drop-down
+
+# [3.37.0](https://github.com/liferay/clay/compare/v3.36.0...v3.37.0) (2021-10-06)
+
+**Note:** Version bump only for package @clayui/drop-down
+
+# [3.36.0](https://github.com/liferay/clay/compare/v3.35.3...v3.36.0) (2021-09-23)
+
+### Bug Fixes
+
+-   **@clayui/drop-down:** fixes the values of the `width` property of the Menu ([f29681e](https://github.com/liferay/clay/commit/f29681e))
+
+## [3.35.3](https://github.com/liferay/clay/compare/v3.35.2...v3.35.3) (2021-09-09)
+
+**Note:** Version bump only for package @clayui/drop-down
+
 ## [3.35.2](https://github.com/liferay/clay/compare/v3.35.1...v3.35.2) (2021-08-30)
 
 **Note:** Version bump only for package @clayui/drop-down

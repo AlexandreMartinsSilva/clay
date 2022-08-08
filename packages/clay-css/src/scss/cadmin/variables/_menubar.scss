@@ -10,8 +10,8 @@ $cadmin-menubar-vertical-expand-md: map-deep-merge(
 			flex-wrap: wrap,
 			justify-content: space-between,
 			margin-bottom: 24px,
-			margin-left: math-sign($cadmin-grid-gutter-width / 2),
-			margin-right: math-sign($cadmin-grid-gutter-width / 2),
+			margin-left: math-sign($cadmin-grid-gutter-width * 0.5),
+			margin-right: math-sign($cadmin-grid-gutter-width * 0.5),
 		),
 		collapse: (
 			display: block,
@@ -108,10 +108,11 @@ $cadmin-menubar-vertical-transparent-md: map-deep-merge(
 			color: $cadmin-gray-900,
 			hover: (
 				background-color: $cadmin-gray-100,
-				color: darken($cadmin-gray-900, 5%),
+				color: clay-darken($cadmin-gray-900, 5%),
 			),
 			focus: (
-				background-color: lighten($cadmin-component-active-bg, 44.9),
+				background-color:
+					clay-lighten($cadmin-component-active-bg, 44.9),
 			),
 			active-class: (
 				background-color: $cadmin-primary-l3,
@@ -222,8 +223,8 @@ $cadmin-menubar-vertical-expand-lg: map-deep-merge(
 			flex-wrap: wrap,
 			justify-content: space-between,
 			margin-bottom: 24px,
-			margin-left: math-sign($cadmin-grid-gutter-width / 2),
-			margin-right: math-sign($cadmin-grid-gutter-width / 2),
+			margin-left: math-sign($cadmin-grid-gutter-width * 0.5),
+			margin-right: math-sign($cadmin-grid-gutter-width * 0.5),
 		),
 		collapse: (
 			display: block,
@@ -320,10 +321,11 @@ $cadmin-menubar-vertical-transparent-lg: map-deep-merge(
 			color: $cadmin-gray-900,
 			hover: (
 				background-color: $cadmin-gray-100,
-				color: darken($cadmin-gray-900, 5%),
+				color: clay-darken($cadmin-gray-900, 5%),
 			),
 			focus: (
-				background-color: lighten($cadmin-component-active-bg, 44.9),
+				background-color:
+					clay-lighten($cadmin-component-active-bg, 44.9),
 			),
 			active-class: (
 				background-color: $cadmin-primary-l3,

@@ -8,9 +8,8 @@ import classNames from 'classnames';
 import React from 'react';
 import {createPortal} from 'react-dom';
 
-const ClayPortalContext = React.createContext<React.RefObject<Element | null> | null>(
-	null
-);
+const ClayPortalContext =
+	React.createContext<React.RefObject<Element | null> | null>(null);
 
 ClayPortalContext.displayName = 'ClayPortalContext';
 
@@ -54,13 +53,13 @@ interface IProps extends IBaseProps {
 	subPortalRef?: React.RefObject<Element>;
 }
 
-export const ClayPortal: React.FunctionComponent<IProps> = ({
+export const ClayPortal = ({
 	children,
 	className,
 	containerRef,
 	id,
 	subPortalRef,
-}) => {
+}: IProps) => {
 	const {theme} = useProvider();
 
 	const parentPortalRef = React.useContext(ClayPortalContext);

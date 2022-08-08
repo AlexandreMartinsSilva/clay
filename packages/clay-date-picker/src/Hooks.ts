@@ -8,16 +8,17 @@ import {useCallback, useState} from 'react';
 import {IDay, Month, WeekDays, clone, formatDate, setDate} from './Helpers';
 import {FirstDayOfWeek} from './types';
 
+import type {Input} from '@clayui/time-picker';
+
+const normalizeTime = (date: Date) =>
+	setDate(date, {hours: 12, milliseconds: 0, minutes: 0, seconds: 0});
+
 /**
  * Handles selected days and stabilize date time when set to avoid problems
  * when the range is used to check intervals.
  */
-export const useDaysSelected = (initialMonth: Date) => {
-	const [daysSelected, set] = useState(() => {
-		const date = normalizeTime(initialMonth);
-
-		return [date, date] as const;
-	});
+export const useDaysSelected = (defaultDays: () => readonly [Date, Date]) => {
+	const [daysSelected, set] = useState(defaultDays);
 
 	const setDaysSelected = useCallback(([start, end]: [Date, Date]) => {
 		// Preserves the reference of dates
@@ -55,36 +56,45 @@ export const useWeeks = (
 /**
  * Sets the current time
  */
-export const useCurrentTime = (format: string) => {
-	const [currentTime, set] = useState<string>(() =>
-		formatDate(setDate(new Date(), {hours: 0, minutes: 0}), format)
-	);
+export const useCurrentTime = (
+	defaultTime: () => string,
+	use12Hours: boolean
+) => {
+	const [currentTime, set] = useState<string>(defaultTime);
 
 	const setCurrentTime = useCallback(
-		(hours: number | string, minutes: number | string) => {
+		(
+			hours: number | string,
+			minutes: number | string,
+			ampm?: Input['ampm']
+		) => {
 			const date = setDate(new Date(), {hours, minutes});
 
 			if (typeof hours !== 'string') {
 				hours = formatDate(date, 'HH');
+
+				if (use12Hours) {
+					hours = formatDate(setDate(new Date(), {hours}), 'hh');
+				}
 			}
 
 			if (typeof minutes !== 'string') {
 				minutes = formatDate(date, 'mm');
 			}
 
-			set(`${hours}:${minutes}`);
+			const value = ampm
+				? `${hours}:${minutes} ${ampm}`
+				: `${hours}:${minutes}`;
+
+			set(value);
+
+			return value;
 		},
 		[]
 	);
 
-	return [currentTime, setCurrentTime] as [
-		string,
-		(hours: number | string, minutes: number | string) => void
-	];
+	return [currentTime, setCurrentTime] as const;
 };
-
-const normalizeTime = (date: Date) =>
-	setDate(date, {hours: 12, milliseconds: 0, minutes: 0, seconds: 0});
 
 function getDaysInMonth(d: Date) {
 	const firstDayOfMonth = new Date(d.getFullYear(), d.getMonth(), 1, 12);

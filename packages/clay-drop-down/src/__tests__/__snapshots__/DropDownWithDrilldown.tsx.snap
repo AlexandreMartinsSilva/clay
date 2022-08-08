@@ -7,6 +7,9 @@ exports[`ClayDropDownWithDrilldown renders 1`] = `
       class="dropdown"
     >
       <button
+        aria-controls="clay-dropdown-menu-1"
+        aria-expanded="true"
+        aria-haspopup="menu"
         class="dropdown-toggle"
         data-testid="trigger"
         style=""
@@ -17,22 +20,29 @@ exports[`ClayDropDownWithDrilldown renders 1`] = `
     <div>
       <div
         class="dropdown-menu drilldown dropdown-menu-indicator-end show"
+        id="clay-dropdown-menu-1"
+        role="presentation"
         style="left: -999px; top: -995px;"
       >
         <div
           class="drilldown-inner"
         >
           <div
+            aria-hidden="true"
             class="drilldown-item drilldown-current"
           >
             <ul
               class="inline-scroller"
+              role="menu"
             >
-              <li>
+              <li
+                role="none"
+              >
                 <a
                   class="dropdown-item"
                   data-testid="menu-item-Hash Link"
                   href="#"
+                  role="menuitem"
                 >
                   <span
                     class="dropdown-item-indicator-text-end"
@@ -41,10 +51,13 @@ exports[`ClayDropDownWithDrilldown renders 1`] = `
                   </span>
                 </a>
               </li>
-              <li>
+              <li
+                role="none"
+              >
                 <button
                   class="dropdown-item btn btn-unstyled"
                   data-testid="menu-item-Alert!"
+                  role="menuitem"
                   type="button"
                 >
                   <span
@@ -54,10 +67,13 @@ exports[`ClayDropDownWithDrilldown renders 1`] = `
                   </span>
                 </button>
               </li>
-              <li>
+              <li
+                role="none"
+              >
                 <button
                   class="dropdown-item btn btn-unstyled"
                   data-testid="menu-item-Subnav"
+                  role="menuitem"
                   type="button"
                 >
                   <span
@@ -82,16 +98,21 @@ exports[`ClayDropDownWithDrilldown renders 1`] = `
             </ul>
           </div>
           <div
+            aria-hidden="false"
             class="drilldown-item"
           >
             <ul
               class="inline-scroller"
+              role="menu"
             >
-              <li>
+              <li
+                role="none"
+              >
                 <a
                   class="dropdown-item"
                   data-testid="menu-item-2nd hash link"
                   href="#"
+                  role="menuitem"
                 >
                   <span
                     class="dropdown-item-indicator-text-end"
@@ -100,10 +121,13 @@ exports[`ClayDropDownWithDrilldown renders 1`] = `
                   </span>
                 </a>
               </li>
-              <li>
+              <li
+                role="none"
+              >
                 <button
                   class="dropdown-item btn btn-unstyled"
                   data-testid="menu-item-Subnav"
+                  role="menuitem"
                   type="button"
                 >
                   <span
@@ -128,15 +152,20 @@ exports[`ClayDropDownWithDrilldown renders 1`] = `
             </ul>
           </div>
           <div
+            aria-hidden="false"
             class="drilldown-item"
           >
             <ul
               class="inline-scroller"
+              role="menu"
             >
-              <li>
+              <li
+                role="none"
+              >
                 <button
                   class="dropdown-item btn btn-unstyled"
                   data-testid="menu-item-The"
+                  role="menuitem"
                   type="button"
                 >
                   <span
@@ -146,10 +175,13 @@ exports[`ClayDropDownWithDrilldown renders 1`] = `
                   </span>
                 </button>
               </li>
-              <li>
+              <li
+                role="none"
+              >
                 <button
                   class="dropdown-item btn btn-unstyled"
                   data-testid="menu-item-End"
+                  role="menuitem"
                   type="button"
                 >
                   <span
@@ -175,6 +207,9 @@ exports[`ClayDropDownWithDrilldown renders dividers 1`] = `
       class="dropdown"
     >
       <button
+        aria-controls="clay-dropdown-menu-2"
+        aria-expanded="true"
+        aria-haspopup="menu"
         class="dropdown-toggle"
         data-testid="trigger"
         style=""
@@ -185,22 +220,29 @@ exports[`ClayDropDownWithDrilldown renders dividers 1`] = `
     <div>
       <div
         class="dropdown-menu drilldown dropdown-menu-indicator-end show"
+        id="clay-dropdown-menu-2"
+        role="presentation"
         style="left: -999px; top: -995px;"
       >
         <div
           class="drilldown-inner"
         >
           <div
+            aria-hidden="true"
             class="drilldown-item drilldown-current"
           >
             <ul
               class="inline-scroller"
+              role="menu"
             >
-              <li>
+              <li
+                role="none"
+              >
                 <a
                   class="dropdown-item"
                   data-testid="menu-item-Hash Link"
                   href="#"
+                  role="menuitem"
                 >
                   <span
                     class="dropdown-item-indicator-text-end"
@@ -214,10 +256,13 @@ exports[`ClayDropDownWithDrilldown renders dividers 1`] = `
                 class="dropdown-divider"
                 role="presentation"
               />
-              <li>
+              <li
+                role="none"
+              >
                 <button
                   class="dropdown-item btn btn-unstyled"
                   data-testid="menu-item-Alert!"
+                  role="menuitem"
                   type="button"
                 >
                   <span
@@ -232,10 +277,13 @@ exports[`ClayDropDownWithDrilldown renders dividers 1`] = `
                 class="dropdown-divider"
                 role="presentation"
               />
-              <li>
+              <li
+                role="none"
+              >
                 <button
                   class="dropdown-item btn btn-unstyled"
                   data-testid="menu-item-Subnav"
+                  role="menuitem"
                   type="button"
                 >
                   <span
@@ -260,16 +308,21 @@ exports[`ClayDropDownWithDrilldown renders dividers 1`] = `
             </ul>
           </div>
           <div
+            aria-hidden="false"
             class="drilldown-item"
           >
             <ul
               class="inline-scroller"
+              role="menu"
             >
-              <li>
+              <li
+                role="none"
+              >
                 <a
                   class="dropdown-item"
                   data-testid="menu-item-2nd hash link"
                   href="#"
+                  role="menuitem"
                 >
                   <span
                     class="dropdown-item-indicator-text-end"
@@ -283,10 +336,13 @@ exports[`ClayDropDownWithDrilldown renders dividers 1`] = `
                 class="dropdown-divider"
                 role="presentation"
               />
-              <li>
+              <li
+                role="none"
+              >
                 <button
                   class="dropdown-item btn btn-unstyled"
                   data-testid="menu-item-Subnav"
+                  role="menuitem"
                   type="button"
                 >
                   <span
@@ -311,15 +367,20 @@ exports[`ClayDropDownWithDrilldown renders dividers 1`] = `
             </ul>
           </div>
           <div
+            aria-hidden="false"
             class="drilldown-item"
           >
             <ul
               class="inline-scroller"
+              role="menu"
             >
-              <li>
+              <li
+                role="none"
+              >
                 <button
                   class="dropdown-item btn btn-unstyled"
                   data-testid="menu-item-The"
+                  role="menuitem"
                   type="button"
                 >
                   <span
@@ -334,10 +395,13 @@ exports[`ClayDropDownWithDrilldown renders dividers 1`] = `
                 class="dropdown-divider"
                 role="presentation"
               />
-              <li>
+              <li
+                role="none"
+              >
                 <button
                   class="dropdown-item btn btn-unstyled"
                   data-testid="menu-item-End"
+                  role="menuitem"
                   type="button"
                 >
                   <span
@@ -363,90 +427,12 @@ exports[`ClayDropDownWithDrilldown renders with the menu initially active 1`] = 
       class="dropdown"
     >
       <button
+        aria-controls="clay-dropdown-menu-5"
+        aria-expanded="true"
+        aria-haspopup="menu"
         class="dropdown-toggle"
         data-testid="trigger"
-        style=""
       />
-    </div>
-  </div>
-  <div>
-    <div>
-      <div
-        class="dropdown-menu drilldown dropdown-menu-indicator-end show"
-        style="left: -999px; top: -995px;"
-      >
-        <div
-          class="drilldown-inner"
-        >
-          <div
-            class="drilldown-item drilldown-current"
-          >
-            <ul
-              class="inline-scroller"
-            >
-              <li>
-                <a
-                  class="dropdown-item"
-                  data-testid="menu-item-Hash Link"
-                  href="#"
-                >
-                  <span
-                    class="dropdown-item-indicator-text-end"
-                  >
-                    Hash Link
-                  </span>
-                </a>
-              </li>
-              <li>
-                <button
-                  class="dropdown-item btn btn-unstyled"
-                  data-testid="menu-item-Subnav"
-                  type="button"
-                >
-                  <span
-                    class="dropdown-item-indicator-text-end"
-                  >
-                    Subnav
-                  </span>
-                  <span
-                    class="dropdown-item-indicator-end"
-                  >
-                    <svg
-                      class="lexicon-icon lexicon-icon-angle-right"
-                      role="presentation"
-                    >
-                      <use
-                        xlink:href="##angle-right"
-                      />
-                    </svg>
-                  </span>
-                </button>
-              </li>
-            </ul>
-          </div>
-          <div
-            class="drilldown-item"
-          >
-            <ul
-              class="inline-scroller"
-            >
-              <li>
-                <a
-                  class="dropdown-item"
-                  data-testid="menu-item-2nd hash link"
-                  href="#"
-                >
-                  <span
-                    class="dropdown-item-indicator-text-end"
-                  >
-                    2nd hash link
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </body>
@@ -459,6 +445,9 @@ exports[`ClayDropDownWithDrilldown the menu can be toggled by clicking in an ite
       class="dropdown"
     >
       <button
+        aria-controls="clay-dropdown-menu-6"
+        aria-expanded="false"
+        aria-haspopup="menu"
         class="dropdown-toggle"
         data-testid="trigger"
         style=""
@@ -469,21 +458,28 @@ exports[`ClayDropDownWithDrilldown the menu can be toggled by clicking in an ite
     <div>
       <div
         class="dropdown-menu drilldown dropdown-menu-indicator-end"
+        id="clay-dropdown-menu-6"
+        role="presentation"
         style="left: -999px; top: -995px;"
       >
         <div
           class="drilldown-inner"
         >
           <div
+            aria-hidden="true"
             class="drilldown-item drilldown-current"
           >
             <ul
               class="inline-scroller"
+              role="menu"
             >
-              <li>
+              <li
+                role="none"
+              >
                 <button
                   class="dropdown-item btn btn-unstyled"
                   data-testid="menu-item-Toggle"
+                  role="menuitem"
                   type="button"
                 >
                   <span
@@ -493,10 +489,13 @@ exports[`ClayDropDownWithDrilldown the menu can be toggled by clicking in an ite
                   </span>
                 </button>
               </li>
-              <li>
+              <li
+                role="none"
+              >
                 <button
                   class="dropdown-item btn btn-unstyled"
                   data-testid="menu-item-Subnav"
+                  role="menuitem"
                   type="button"
                 >
                   <span
@@ -521,16 +520,21 @@ exports[`ClayDropDownWithDrilldown the menu can be toggled by clicking in an ite
             </ul>
           </div>
           <div
+            aria-hidden="false"
             class="drilldown-item"
           >
             <ul
               class="inline-scroller"
+              role="menu"
             >
-              <li>
+              <li
+                role="none"
+              >
                 <a
                   class="dropdown-item"
                   data-testid="menu-item-2nd hash link"
                   href="#"
+                  role="menuitem"
                 >
                   <span
                     class="dropdown-item-indicator-text-end"

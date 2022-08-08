@@ -7,18 +7,18 @@ import ClayDropDown, {ClayDropDownWithItems} from '..';
 import {cleanup, fireEvent, render} from '@testing-library/react';
 import React from 'react';
 
-const DropDownWithState: React.FunctionComponent<any> = ({
-	children,
-	...others
-}) => {
+import '@testing-library/jest-dom/extend-expect';
+
+const DropDownWithState = ({children, ...others}: any) => {
 	const [active, setActive] = React.useState(false);
 
 	return (
 		<ClayDropDown
 			{...others}
 			active={active}
-			onActiveChange={(val) => setActive(val)}
-			trigger={<button>{'Click Me'}</button>}
+			onActiveChange={setActive}
+			renderMenuOnClick
+			trigger={<button>Click Me</button>}
 		>
 			{children}
 		</ClayDropDown>
@@ -49,9 +49,9 @@ describe('ClayDropDown', () => {
 			</DropDownWithState>
 		);
 
-		expect(document.body.querySelector('.dropdown-menu')).not.toContain(
-			'show'
-		);
+		expect(
+			document.body.querySelector('.dropdown-menu')
+		).not.toBeInTheDocument();
 	});
 
 	it('renders dropdown menu when clicked', () => {
@@ -104,7 +104,7 @@ describe('ClayDropDown', () => {
 					</ClayDropDown.ItemList>
 				</DropDownWithState>
 
-				<div data-testid="OUTSIDE_ELEMENT">{'outside item'}</div>
+				<div data-testid="OUTSIDE_ELEMENT">outside item</div>
 			</div>
 		);
 
@@ -146,7 +146,7 @@ describe('ClayDropDown', () => {
 					</ClayDropDown.ItemList>
 				</DropDownWithState>
 
-				<button data-testid="BUTTON_OUTSIDE">{'outside item'}</button>
+				<button data-testid="BUTTON_OUTSIDE">outside item</button>
 			</div>
 		);
 
@@ -287,7 +287,8 @@ describe('ClayDropDown', () => {
 						onClick: onClickFn,
 					},
 				]}
-				trigger={<button>{'Click Me'}</button>}
+				renderMenuOnClick
+				trigger={<button>Click Me</button>}
 			/>
 		);
 

@@ -87,7 +87,7 @@ const OFFSET_MAP = {
 	trtl: LEFT_OFFSET,
 };
 
-interface IProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
 	/**
 	 * Flag to indicate if menu is showing or not.
 	 */
@@ -97,6 +97,11 @@ interface IProps extends React.HTMLAttributes<HTMLDivElement> {
 	 * HTML element that the menu should be aligned to
 	 */
 	alignElementRef: React.RefObject<HTMLElement>;
+
+	/**
+	 * Flag to align the DropDown menu within the viewport.
+	 */
+	alignmentByViewport?: boolean;
 
 	/**
 	 * Flag to suggest or not the best region to align menu element.
@@ -163,12 +168,23 @@ interface IProps extends React.HTMLAttributes<HTMLDivElement> {
 	/**
 	 * Callback function for when active state changes.
 	 */
-	onSetActive: (val: boolean) => void;
+	onActiveChange?: (value: boolean) => void;
 
 	/**
-	 * `dropdown-menu-width-${width}`
+	 * Callback function for when active state changes.
+	 * @deprecated since v3.52.0 - use `onActiveChange` instead.
 	 */
-	width?: 'sm' | 'auto';
+	onSetActive?: (value: boolean) => void;
+
+	/**
+	 * The modifier class `dropdown-menu-width-${width}` makes the menu expand
+	 * the full width of the page.
+	 *
+	 * - sm makes the menu 500px wide.
+	 * - shrink makes the menu auto-adjust to text and max 240px wide.
+	 * - full makes the menu 100% wide.
+	 */
+	width?: 'sm' | 'shrink' | 'full';
 }
 
 const useIsomorphicLayoutEffect =
@@ -179,6 +195,7 @@ const ClayDropDownMenu = React.forwardRef<HTMLDivElement, IProps>(
 		{
 			active,
 			alignElementRef,
+			alignmentByViewport = false,
 			alignmentPosition = Align.BottomLeft,
 			autoBestAlign = true,
 			children,
@@ -194,6 +211,7 @@ const ClayDropDownMenu = React.forwardRef<HTMLDivElement, IProps>(
 					number,
 					number
 				],
+			onActiveChange,
 			onSetActive,
 			width,
 			...otherProps
@@ -203,26 +221,28 @@ const ClayDropDownMenu = React.forwardRef<HTMLDivElement, IProps>(
 		// See https://github.com/microsoft/TypeScript/issues/30748#issuecomment-480197036
 		ref
 	) => {
+		const setActive = onActiveChange ?? onSetActive;
+
 		const subPortalRef = useRef<HTMLDivElement | null>(null);
 
 		useEffect(() => {
 			if (closeOnClickOutside) {
 				const handleClick = (event: MouseEvent) => {
 					const nodeRefs = [alignElementRef, subPortalRef];
-					const nodes: Array<Node> = (Array.isArray(nodeRefs)
-						? nodeRefs
-						: [nodeRefs]
+					const nodes: Array<Node> = (
+						Array.isArray(nodeRefs) ? nodeRefs : [nodeRefs]
 					)
 						.filter((ref) => ref.current)
 						.map((ref) => ref.current!);
 
 					if (
+						active &&
 						event.target instanceof Node &&
 						!nodes.find((element) =>
 							element.contains(event.target as Node)
 						)
 					) {
-						onSetActive(false);
+						setActive!(false);
 					}
 				};
 
@@ -232,7 +252,7 @@ const ClayDropDownMenu = React.forwardRef<HTMLDivElement, IProps>(
 					window.removeEventListener('mousedown', handleClick);
 				};
 			}
-		}, [closeOnClickOutside]);
+		}, [active, closeOnClickOutside]);
 
 		useEffect(() => {
 			const handleEsc = (event: KeyboardEvent) => {
@@ -243,7 +263,7 @@ const ClayDropDownMenu = React.forwardRef<HTMLDivElement, IProps>(
 						focusRefOnEsc.current.focus();
 					}
 
-					onSetActive(false);
+					setActive!(false);
 				}
 			};
 
@@ -272,6 +292,7 @@ const ClayDropDownMenu = React.forwardRef<HTMLDivElement, IProps>(
 						overflow: {
 							adjustX: autoBestAlign,
 							adjustY: autoBestAlign,
+							alwaysByViewport: alignmentByViewport,
 						},
 						points,
 						sourceElement: (ref as React.RefObject<HTMLElement>)
@@ -286,7 +307,7 @@ const ClayDropDownMenu = React.forwardRef<HTMLDivElement, IProps>(
 			if (active) {
 				align();
 			}
-		}, [active]);
+		}, [active, children]);
 
 		useEffect(() => {
 			if (alignElementRef && alignElementRef.current) {
@@ -309,6 +330,7 @@ const ClayDropDownMenu = React.forwardRef<HTMLDivElement, IProps>(
 							show: active,
 						})}
 						ref={ref}
+						role="presentation"
 					>
 						{children}
 					</div>

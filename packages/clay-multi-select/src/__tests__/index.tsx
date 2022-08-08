@@ -103,7 +103,7 @@ describe('ClayMultiSelect', () => {
 							onClick={() => onItemClick(item)}
 						>
 							<strong>{item[locator.label]}</strong>
-							<p>{'Name'}</p>
+							<p>Name</p>
 						</ClayDropDown.Item>
 					))}
 			</ClayDropDown.ItemList>
@@ -129,6 +129,20 @@ describe('ClayMultiSelect', () => {
 		);
 
 		expect(document.body).toMatchSnapshot();
+	});
+
+	it("don't show a placeholder when you have items", () => {
+		const onItemsChangeFn = jest.fn();
+
+		const {container} = render(
+			<ClayMultiSelectWithState
+				items={items}
+				onItemsChange={onItemsChangeFn}
+				spritemap="/foo/bar"
+			/>
+		);
+
+		expect(container.querySelector('input')!.placeholder).toBe('');
 	});
 });
 
@@ -224,9 +238,9 @@ describe('Interactions', () => {
 			/>
 		);
 
-		const menuStyles = (document.querySelector(
-			'.autocomplete-dropdown-menu'
-		) as HTMLElement).style;
+		const menuStyles = (
+			document.querySelector('.autocomplete-dropdown-menu') as HTMLElement
+		).style;
 
 		expect(menuStyles.left).not.toEqual('');
 		expect(menuStyles.top).not.toEqual('');
@@ -368,10 +382,10 @@ describe('Interactions', () => {
 					inputValue={value}
 					isLoading={isLoading}
 					items={selectedItems}
-					onChange={(newInputVal) => {
-						setValue(newInputVal);
+					onChange={(value: string) => {
+						setValue(value);
 
-						asyncData(newInputVal);
+						asyncData(value);
 					}}
 					onItemsChange={setSelectedItems}
 					sourceItems={items}

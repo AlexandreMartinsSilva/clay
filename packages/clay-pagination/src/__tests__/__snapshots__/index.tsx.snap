@@ -38,6 +38,9 @@ exports[`ClayPagination renders 1`] = `
       class="dropdown page-item"
     >
       <button
+        aria-controls="clay-dropdown-menu-1"
+        aria-expanded="false"
+        aria-haspopup="menu"
         class="dropdown-toggle page-link btn btn-unstyled"
         style=""
         type="button"
@@ -70,6 +73,7 @@ exports[`ClayPagination renders 1`] = `
     >
       <button
         class="page-link"
+        disabled=""
         type="button"
       >
         12
@@ -99,6 +103,9 @@ exports[`ClayPagination renders 1`] = `
       class="dropdown page-item"
     >
       <button
+        aria-controls="clay-dropdown-menu-2"
+        aria-expanded="false"
+        aria-haspopup="menu"
         class="dropdown-toggle page-link btn btn-unstyled"
         style=""
         type="button"
@@ -169,6 +176,7 @@ exports[`ClayPagination renders with only one page 1`] = `
     >
       <button
         class="page-link"
+        disabled=""
         type="button"
       >
         1

@@ -47,7 +47,7 @@ interface IItemWithItems extends IItem {
 	items?: Array<IItem>;
 }
 
-interface IProps {
+export interface IProps {
 	/**
 	 * Label of item that is currently active.
 	 * @deprecated since version 3.3.x
@@ -85,7 +85,7 @@ interface IProps {
 	spritemap?: string;
 }
 
-interface INavItemProps extends IItemWithItems {
+export interface INavItemProps extends IItemWithItems {
 	/**
 	 * Integer to keep track of what nested level the item is.
 	 */
@@ -141,12 +141,16 @@ function Item({
 						exitActive: 'collapsing',
 					}}
 					in={expanded}
-					onEnter={(el: HTMLElement) =>
-						el.setAttribute('style', `height: 0px`)
+					onEnter={(element: HTMLElement) =>
+						element.setAttribute('style', `height: 0px`)
 					}
-					onEntering={(el: HTMLElement) => setElementFullHeight(el)}
-					onExit={(el) => setElementFullHeight(el)}
-					onExiting={(el) => el.setAttribute('style', `height: 0px`)}
+					onEntering={(element: HTMLElement) =>
+						setElementFullHeight(element)
+					}
+					onExit={(element) => setElementFullHeight(element)}
+					onExiting={(element) =>
+						element.setAttribute('style', `height: 0px`)
+					}
 					timeout={250}
 				>
 					<div>
@@ -168,9 +172,11 @@ function renderItems(items: Array<IItem>, spritemap?: string, level = 0) {
 	});
 }
 
-const ClayVerticalNav: React.FunctionComponent<IProps> & {
+function ClayVerticalNav(props: IProps): JSX.Element & {
 	Trigger: typeof Trigger;
-} = ({
+};
+
+function ClayVerticalNav({
 	activeLabel,
 	decorated,
 	items,
@@ -179,7 +185,7 @@ const ClayVerticalNav: React.FunctionComponent<IProps> & {
 	trigger: CustomTrigger = Trigger,
 	triggerLabel = 'Menu',
 	...otherProps
-}: IProps) => {
+}: IProps) {
 	const [active, setActive] = React.useState(false);
 
 	warning(
@@ -218,7 +224,7 @@ const ClayVerticalNav: React.FunctionComponent<IProps> & {
 			</div>
 		</nav>
 	);
-};
+}
 
 ClayVerticalNav.Trigger = Trigger;
 

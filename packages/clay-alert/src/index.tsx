@@ -59,6 +59,11 @@ export type DisplayType = 'danger' | 'info' | 'success' | 'warning';
 
 export interface IClayAlertProps extends React.HTMLAttributes<HTMLDivElement> {
 	/**
+	 * A React Component to render the alert actions.
+	 */
+	actions?: React.ReactNode;
+
+	/**
 	 * Flag to indicate alert should automatically call `onClose`. It also
 	 * accepts a duration (in ms) which indicates how long to wait. If `true`
 	 * is passed in, the timeout will be 10000ms.
@@ -94,7 +99,7 @@ export interface IClayAlertProps extends React.HTMLAttributes<HTMLDivElement> {
 	/**
 	 * Determines the variant of the alert.
 	 */
-	variant?: 'feedback' | 'stripe';
+	variant?: 'feedback' | 'stripe' | 'inline';
 }
 
 const ICON_MAP = {
@@ -104,10 +109,15 @@ const ICON_MAP = {
 	warning: 'warning-full',
 };
 
-const ClayAlert: React.FunctionComponent<IClayAlertProps> & {
+const VARIANTS = ['inline', 'feedback'];
+
+function ClayAlert(props: IClayAlertProps): JSX.Element & {
 	Footer: typeof Footer;
 	ToastContainer: typeof ToastContainer;
-} = ({
+};
+
+function ClayAlert({
+	actions,
 	autoClose,
 	children,
 	className,
@@ -118,13 +128,13 @@ const ClayAlert: React.FunctionComponent<IClayAlertProps> & {
 	title,
 	variant,
 	...otherProps
-}: IClayAlertProps) => {
+}: IClayAlertProps) {
 	const {pauseAutoCloseTimer, startAutoCloseTimer} = useAutoClose(
 		autoClose,
 		onClose
 	);
 
-	const ConditionalContainer: React.FunctionComponent<{}> = ({children}) =>
+	const ConditionalContainer = ({children}: any) =>
 		variant === 'stripe' ? (
 			<div className="container">{children}</div>
 		) : (
@@ -133,13 +143,20 @@ const ClayAlert: React.FunctionComponent<IClayAlertProps> & {
 
 	const showDismissible = onClose && !hideCloseIcon;
 
+	const AlertIndicator = () => (
+		<span className="alert-indicator">
+			<Icon spritemap={spritemap} symbol={ICON_MAP[displayType]} />
+		</span>
+	);
+
 	return (
 		<div
 			{...otherProps}
 			className={classNames(className, 'alert', {
 				'alert-dismissible': showDismissible,
-				'alert-feedback': variant === 'feedback',
+				'alert-feedback alert-indicator-start': variant === 'feedback',
 				'alert-fluid': variant === 'stripe',
+				'alert-inline': variant === 'inline',
 				[`alert-${displayType}`]: displayType,
 			})}
 			onMouseOut={startAutoCloseTimer}
@@ -148,24 +165,37 @@ const ClayAlert: React.FunctionComponent<IClayAlertProps> & {
 		>
 			<ConditionalContainer>
 				<ClayLayout.ContentRow className="alert-autofit-row">
-					<ClayLayout.ContentCol>
-						<ClayLayout.ContentSection>
-							<span className="alert-indicator">
-								<Icon
-									spritemap={spritemap}
-									symbol={ICON_MAP[displayType]}
-								/>
-							</span>
-						</ClayLayout.ContentSection>
-					</ClayLayout.ContentCol>
+					{!VARIANTS.includes(variant as string) && (
+						<ClayLayout.ContentCol>
+							<ClayLayout.ContentSection>
+								<AlertIndicator />
+							</ClayLayout.ContentSection>
+						</ClayLayout.ContentCol>
+					)}
 
 					<ClayLayout.ContentCol expand>
 						<ClayLayout.ContentSection>
+							{VARIANTS.includes(variant as string) && (
+								<AlertIndicator />
+							)}
+
 							{title && <strong className="lead">{title}</strong>}
 
 							{children}
+
+							{variant !== 'inline' && actions && (
+								<Footer>{actions}</Footer>
+							)}
 						</ClayLayout.ContentSection>
 					</ClayLayout.ContentCol>
+
+					{variant === 'inline' && actions && (
+						<ClayLayout.ContentCol>
+							<ClayLayout.ContentSection>
+								{actions}
+							</ClayLayout.ContentSection>
+						</ClayLayout.ContentCol>
+					)}
 				</ClayLayout.ContentRow>
 
 				{showDismissible && (
@@ -181,7 +211,7 @@ const ClayAlert: React.FunctionComponent<IClayAlertProps> & {
 			</ConditionalContainer>
 		</div>
 	);
-};
+}
 
 ClayAlert.Footer = Footer;
 ClayAlert.ToastContainer = ToastContainer;

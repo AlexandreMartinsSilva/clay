@@ -7,10 +7,10 @@ $cadmin-component-link: map-deep-merge(
 		color: $cadmin-gray-600,
 		transition: box-shadow 0.15s ease-in-out,
 		hover: (
-			color: darken($cadmin-gray-600, 15%),
+			color: clay-darken($cadmin-gray-600, 15%),
 		),
 		focus: (
-			color: darken($cadmin-gray-600, 15%),
+			color: clay-darken($cadmin-gray-600, 15%),
 			box-shadow: $cadmin-component-focus-box-shadow,
 			outline: 0,
 		),
@@ -25,10 +25,10 @@ $cadmin-link-primary: map-deep-merge(
 		color: $cadmin-primary,
 		transition: box-shadow 0.15s ease-in-out,
 		hover: (
-			color: darken($cadmin-primary, 15%),
+			color: clay-darken($cadmin-primary, 15%),
 		),
 		focus: (
-			color: darken($cadmin-primary, 15%),
+			color: clay-darken($cadmin-primary, 15%),
 			box-shadow: $cadmin-component-focus-box-shadow,
 			outline: 0,
 		),
@@ -111,8 +111,10 @@ $cadmin-link-outline: map-deep-merge(
 		hover: (
 			text-decoration: none,
 		),
-		disabled-active: (
-			pointer-events: none,
+		disabled: (
+			active: (
+				pointer-events: none,
+			),
 		),
 		lexicon-icon: (
 			margin-top: 0,
@@ -137,7 +139,8 @@ $cadmin-link-outline-primary: map-deep-merge(
 			outline: 0,
 		),
 		active: (
-			background-color: lighten(desaturate($cadmin-primary, 42.05), 41.76),
+			background-color:
+				clay-lighten(clay-desaturate($cadmin-primary, 42.05), 41.76),
 			color: $cadmin-primary,
 		),
 		disabled: (
@@ -207,8 +210,8 @@ $cadmin-link-monospaced: map-deep-merge(
 		padding-top: 0,
 		vertical-align: middle,
 		width: $cadmin-link-monospaced-size,
-		lexicon: (
-			icon-margin-top: 0,
+		lexicon-icon: (
+			margin-top: 0,
 		),
 	),
 	$cadmin-link-monospaced
@@ -238,15 +241,22 @@ $cadmin-component-title-link: map-deep-merge(
 		color: $cadmin-gray-900,
 		transition: box-shadow 0.15s ease-in-out,
 		hover: (
-			color: darken($cadmin-gray-900, 15%),
+			color: clay-darken($cadmin-gray-900, 15%),
 		),
 		focus: (
-			color: darken($cadmin-gray-900, 15%),
+			color: clay-darken($cadmin-gray-900, 15%),
 			box-shadow: $cadmin-component-focus-box-shadow,
 			outline: 0,
 		),
 	),
 	$cadmin-component-title-link
+);
+
+$cadmin-component-title: map-deep-merge(
+	$cadmin-component-title,
+	(
+		href: $cadmin-component-title-link,
+	)
 );
 
 // Component Subtitle
@@ -278,6 +288,13 @@ $cadmin-component-subtitle-link: map-deep-merge(
 		),
 	),
 	$cadmin-component-subtitle-link
+);
+
+$cadmin-component-subtitle: map-deep-merge(
+	$cadmin-component-subtitle,
+	(
+		href: $cadmin-component-subtitle-link,
+	)
 );
 
 // Component Action
@@ -320,9 +337,9 @@ $cadmin-component-action: map-deep-merge(
 			color: $cadmin-secondary,
 			cursor: $cadmin-disabled-cursor,
 			opacity: $cadmin-btn-disabled-opacity,
-		),
-		disabled-active: (
-			pointer-events: none,
+			active: (
+				pointer-events: none,
+			),
 		),
 		btn-focus-box-shadow: map-get($cadmin-btn-secondary, focus-box-shadow),
 		btn-focus-outline: 0,

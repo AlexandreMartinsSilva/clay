@@ -5,7 +5,7 @@ $multi-step-nav-padding-y: 0 !default;
 $multi-step-icon-bg: $gray-200 !default;
 $multi-step-icon-border-color: null !default;
 $multi-step-icon-border-style: null !default;
-$multi-step-icon-border-width: 0 !default;
+$multi-step-icon-border-width: 0px !default;
 $multi-step-icon-color: rgba($black, 0.5) !default;
 $multi-step-icon-cursor: $link-cursor !default;
 $multi-step-icon-border-radius: $border-radius !default;
@@ -28,11 +28,17 @@ $multi-step-icon-focus-color: $multi-step-icon-hover-color !default;
 $multi-step-icon-focus-outline: 0 !default;
 $multi-step-icon-focus-text-decoration: $multi-step-icon-hover-text-decoration !default;
 
+// See https://issues.liferay.com/browse/LPS-147457.
+
+$data-multi-step-icon-before-content: unquote(
+	"'\\FEFF' attr(data-multi-step-icon)"
+) !default;
+
 $multi-step-divider-bg: $gray-200 !default;
 $multi-step-divider-height: 0.25rem !default;
 $multi-step-divider-spacer-x: 0 !default;
-$multi-step-divider-top: ($multi-step-divider-height / 2) +
-	($multi-step-icon-size / 2) !default;
+$multi-step-divider-top: ($multi-step-divider-height * 0.5) +
+	($multi-step-icon-size * 0.5) !default;
 
 $multi-step-indicator-width: $multi-step-icon-size +
 	($multi-step-divider-spacer-x * 2) !default;

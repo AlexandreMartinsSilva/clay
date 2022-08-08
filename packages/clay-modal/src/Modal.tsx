@@ -5,7 +5,7 @@
 
 import {ClayPortal, IPortalBaseProps} from '@clayui/shared';
 import classNames from 'classnames';
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useMemo, useRef} from 'react';
 import warning from 'warning';
 
 import Body from './Body';
@@ -25,7 +25,7 @@ import {Observer, ObserverType, Size} from './types';
 
 interface IProps
 	extends React.HTMLAttributes<HTMLDivElement>,
-		Omit<IContext, 'onClose'> {
+		Omit<IContext, 'onClose' | 'ariaLabelledby'> {
 	/**
 	 * Flag indicating to vertically center the modal.
 	 */
@@ -40,6 +40,13 @@ interface IProps
 	 * Props to add to the <ClayPortal/>.
 	 */
 	containerProps?: IPortalBaseProps;
+
+	/**
+	 * A flag indicating if the modal shouldn't
+	 * be closed when either the ESC key is pressed
+	 * or when clicking outside the modal
+	 */
+	disableAutoClose?: boolean;
 
 	/**
 	 * The size of element modal.
@@ -69,12 +76,15 @@ const warningMessage = `You need to pass the 'observer' prop to ClayModal for ev
 > ); 
 `;
 
-const ClayModal: React.FunctionComponent<IProps> = ({
+let counter = 0;
+
+const ClayModal = ({
 	center,
 	children,
 	className,
 	containerElementRef,
 	containerProps = {},
+	disableAutoClose = false,
 	observer,
 	size,
 	spritemap,
@@ -87,11 +97,25 @@ const ClayModal: React.FunctionComponent<IProps> = ({
 
 	warning(observer !== undefined, warningMessage);
 
-	useUserInteractions(modalElementRef, modalBodyElementRef, () =>
-		observer.dispatch(ObserverType.Close)
+	useUserInteractions(
+		modalElementRef,
+		modalBodyElementRef,
+		() => !disableAutoClose && observer.dispatch(ObserverType.Close)
 	);
 
 	useEffect(() => observer.dispatch(ObserverType.Open), []);
+
+	useEffect(() => {
+		if (modalBodyElementRef.current) {
+			modalBodyElementRef.current.focus();
+		}
+	}, [modalBodyElementRef]);
+
+	const ariaLabelledby = useMemo(() => {
+		counter++;
+
+		return `clay-modal-label-${counter}`;
+	}, []);
 
 	const [show, content] =
 		observer && observer.mutation ? observer.mutation : [false, false];
@@ -103,6 +127,7 @@ const ClayModal: React.FunctionComponent<IProps> = ({
 			subPortalRef={modalElementRef}
 		>
 			<div
+				aria-hidden="true"
 				className={classNames('modal-backdrop fade', {
 					show,
 				})}
@@ -117,17 +142,20 @@ const ClayModal: React.FunctionComponent<IProps> = ({
 				style={{zIndex: zIndex && zIndex + 10}}
 			>
 				<div
+					aria-labelledby={ariaLabelledby}
 					className={classNames('modal-dialog', {
 						[`modal-${size}`]: size,
 						[`modal-${status}`]: status,
 						'modal-dialog-centered': center,
 					})}
 					ref={modalBodyElementRef}
+					role="dialog"
 					tabIndex={-1}
 				>
 					<div className="modal-content">
 						<Context.Provider
 							value={{
+								ariaLabelledby,
 								onClose: () =>
 									observer.dispatch(ObserverType.Close),
 								spritemap,

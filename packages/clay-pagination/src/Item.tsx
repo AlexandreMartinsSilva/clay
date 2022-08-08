@@ -14,25 +14,24 @@ export interface IPaginationItemProps
 	href?: string;
 }
 
-const ClayPaginationItem: React.FunctionComponent<IPaginationItemProps> = ({
+const ClayPaginationItem = ({
 	active = false,
 	children,
 	disabled = false,
 	href,
 	...otherProps
 }: IPaginationItemProps) => {
-	const classes = classNames('page-item', {active, disabled});
-
 	const ElementTag = href ? ClayLink : 'button';
 
 	return (
-		<li className={classes}>
+		<li className={classNames('page-item', {active, disabled})}>
 			<ElementTag
-				type={!href ? 'button' : undefined}
+				type={href ? undefined : 'button'}
 				{...otherProps}
+				aria-current={active && href ? 'page' : undefined}
 				className="page-link"
-				disabled={disabled}
-				href={href}
+				disabled={href ? undefined : disabled || active}
+				href={disabled || active ? undefined : href}
 			>
 				{children}
 			</ElementTag>

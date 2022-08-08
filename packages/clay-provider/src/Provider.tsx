@@ -4,7 +4,6 @@
  */
 
 import {ClayIconSpriteContext} from '@clayui/icon';
-import {ClayModalProvider} from '@clayui/modal';
 import React, {useContext} from 'react';
 
 interface IProviderProps extends IProviderContext {
@@ -33,11 +32,12 @@ Context.displayName = 'ClayProviderContext';
 export const Provider = ({
 	children,
 	spritemap,
+	theme,
 	...otherProps
 }: IProviderProps) => (
-	<Context.Provider value={otherProps}>
+	<Context.Provider value={{theme, ...otherProps}}>
 		<ClayIconSpriteContext.Provider value={spritemap}>
-			<ClayModalProvider>{children}</ClayModalProvider>
+			{theme ? <div className={theme}>{children}</div> : children}
 		</ClayIconSpriteContext.Provider>
 	</Context.Provider>
 );

@@ -24,9 +24,15 @@ describe('ClayEmptyState', () => {
 		expect(container).toMatchSnapshot();
 	});
 
+	it('when passing `title` property with null, it will not render title section', () => {
+		const {queryByText} = render(<ClayEmptyState title={null} />);
+
+		expect(queryByText('No results found')).toBeNull();
+	});
+
 	it('renders with a children content', () => {
 		const {container} = render(
-			<ClayEmptyState>{'My Empty State'}</ClayEmptyState>
+			<ClayEmptyState>My Empty State</ClayEmptyState>
 		);
 
 		expect(container).toMatchSnapshot();
@@ -38,7 +44,7 @@ describe('ClayEmptyState', () => {
 				imgProps={{alt: 'hello world'}}
 				imgSrc="https://via.placeholder.com/256"
 			>
-				{'My Empty State'}
+				My Empty State
 			</ClayEmptyState>
 		);
 

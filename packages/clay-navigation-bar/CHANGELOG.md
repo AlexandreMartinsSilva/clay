@@ -3,6 +3,87 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.67.0](https://github.com/liferay/clay/compare/v3.66.0...v3.67.0) (2022-07-25)
+
+### Bug Fixes
+
+-   **@clayui/navigation-bar:** set aria-current based off of the status of active ([81bcc8f](https://github.com/liferay/clay/commit/81bcc8fb2e6578e4656da520666f85b25884e2f5))
+-   **@clayui/navigation-bar:** set it to 'page', not just 'true' ([80bf118](https://github.com/liferay/clay/commit/80bf11806e2a455daf4c15daacd4a6de19b69ca1))
+
+## [3.65.1](https://github.com/liferay/clay/compare/v3.65.0...v3.65.1) (2022-07-11)
+
+**Note:** Version bump only for package @clayui/navigation-bar
+
+# [3.65.0](https://github.com/liferay/clay/compare/v3.64.0...v3.65.0) (2022-07-11)
+
+**Note:** Version bump only for package @clayui/navigation-bar
+
+# [3.58.0](https://github.com/liferay/clay/compare/v3.57.0...v3.58.0) (2022-05-23)
+
+**Note:** Version bump only for package @clayui/navigation-bar
+
+# [3.56.0](https://github.com/liferay/clay/compare/v3.55.0...v3.56.0) (2022-05-09)
+
+**Note:** Version bump only for package @clayui/navigation-bar
+
+# [3.55.0](https://github.com/liferay/clay/compare/v3.54.0...v3.55.0) (2022-05-02)
+
+**Note:** Version bump only for package @clayui/navigation-bar
+
+# [3.52.0](https://github.com/liferay/clay/compare/v3.51.0...v3.52.0) (2022-04-04)
+
+### Bug Fixes
+
+-   **@clayui/navigation-bar:** add truncate text OOTB to ClayNavigationBar.Item ([b8a53a2](https://github.com/liferay/clay/commit/b8a53a20d81e10fa065997d740fc000f58334a0c))
+-   **@clayui/navigator-bar:** Long text in Item is truncated ([587171d](https://github.com/liferay/clay/commit/587171d48bcfff641135176a2fae493c695d95b6))
+
+### Features
+
+-   **@clayui/navigation-bar:** add the `nav-link` class by default for Clay components ([c6cff02](https://github.com/liferay/clay/commit/c6cff020911b8080112f0b97199b353f996836f7))
+
+# [3.49.0](https://github.com/liferay/clay/compare/v3.48.0...v3.49.0) (2022-03-15)
+
+**Note:** Version bump only for package @clayui/navigation-bar
+
+# [3.47.0](https://github.com/liferay/clay/compare/v3.46.0...v3.47.0) (2022-02-23)
+
+**Note:** Version bump only for package @clayui/navigation-bar
+
+# [3.45.0](https://github.com/liferay/clay/compare/v3.44.2...v3.45.0) (2022-02-01)
+
+**Note:** Version bump only for package @clayui/navigation-bar
+
+# [3.43.0](https://github.com/liferay/clay/compare/v3.42.0...v3.43.0) (2021-12-29)
+
+### Bug Fixes
+
+-   **@clayui/navigation-bar:** fix error when rendering only one Item ([b3917bb](https://github.com/liferay/clay/commit/b3917bb980ac672ba2a4505d4c249c43102a06fa))
+-   **@clayui/navigation-bar:** let children be an array or a single child ([5ed78ae](https://github.com/liferay/clay/commit/5ed78ae68f3baa98cbb8b3ccfba19be0f037ebe4))
+
+# [3.40.0](https://github.com/liferay/clay/compare/v3.39.0...v3.40.0) (2021-11-17)
+
+**Note:** Version bump only for package @clayui/navigation-bar
+
+# [3.39.0](https://github.com/liferay/clay/compare/v3.38.0...v3.39.0) (2021-10-29)
+
+**Note:** Version bump only for package @clayui/navigation-bar
+
+# [3.38.0](https://github.com/liferay/clay/compare/v3.37.0...v3.38.0) (2021-10-22)
+
+**Note:** Version bump only for package @clayui/navigation-bar
+
+# [3.37.0](https://github.com/liferay/clay/compare/v3.36.0...v3.37.0) (2021-10-06)
+
+**Note:** Version bump only for package @clayui/navigation-bar
+
+# [3.36.0](https://github.com/liferay/clay/compare/v3.35.3...v3.36.0) (2021-09-23)
+
+**Note:** Version bump only for package @clayui/navigation-bar
+
+## [3.35.3](https://github.com/liferay/clay/compare/v3.35.2...v3.35.3) (2021-09-09)
+
+**Note:** Version bump only for package @clayui/navigation-bar
+
 ## [3.35.2](https://github.com/liferay/clay/compare/v3.35.1...v3.35.2) (2021-08-30)
 
 **Note:** Version bump only for package @clayui/navigation-bar

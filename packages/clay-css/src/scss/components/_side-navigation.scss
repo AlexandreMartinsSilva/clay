@@ -1,6 +1,6 @@
 .container-fluid-1280.sidenav-container {
-	padding-left: floor(($grid-gutter-width / 2));
-	padding-right: floor(($grid-gutter-width / 2));
+	padding-left: floor(($grid-gutter-width * 0.5));
+	padding-right: floor(($grid-gutter-width * 0.5));
 }
 
 .sidenav-container {
@@ -63,6 +63,7 @@
 	z-index: $zindex-sidenav;
 }
 
+.sidenav-end,
 .sidenav-right {
 	> .sidenav-content {
 		left: auto;
@@ -125,6 +126,7 @@
 		width: $sidenav-width;
 	}
 
+	&.sidenav-end,
 	&.sidenav-right {
 		left: auto;
 		right: 0;

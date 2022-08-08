@@ -6,7 +6,7 @@
 import classNames from 'classnames';
 import React from 'react';
 
-interface IProps extends React.HTMLAttributes<HTMLDivElement> {
+interface IProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
 	/**
 	 * Message the user will see describing what they can do when on this screen
 	 */
@@ -23,17 +23,23 @@ interface IProps extends React.HTMLAttributes<HTMLDivElement> {
 	imgSrc?: string;
 
 	/**
+	 * Indicates empty state should be a small variant.
+	 */
+	small?: boolean;
+
+	/**
 	 * Title of the message highlighting the description
 	 */
-	title?: string;
+	title?: string | null;
 }
 
-const ClayEmptyState: React.FunctionComponent<IProps> = ({
+const ClayEmptyState = ({
 	children,
 	className,
 	description = 'Sorry, there are no results found',
 	imgProps,
 	imgSrc,
+	small,
 	title = 'No results found',
 	...otherProps
 }: IProps) => {
@@ -43,6 +49,7 @@ const ClayEmptyState: React.FunctionComponent<IProps> = ({
 		<div
 			className={classNames(className, 'c-empty-state', {
 				'c-empty-state-animation': hasImg,
+				'c-empty-state-sm': small,
 			})}
 			{...otherProps}
 		>
@@ -50,7 +57,7 @@ const ClayEmptyState: React.FunctionComponent<IProps> = ({
 				<div className="c-empty-state-image">
 					<div className="c-empty-state-aspect-ratio">
 						<img
-							alt="empty-state-image"
+							alt="c-empty-state-image"
 							className={classNames(
 								'aspect-ratio-item aspect-ratio-item-fluid',
 								imgProps && imgProps.className
@@ -62,11 +69,13 @@ const ClayEmptyState: React.FunctionComponent<IProps> = ({
 				</div>
 			)}
 
-			<div className="c-empty-state-title">
-				<span className="text-truncate-inline">
-					<span className="text-truncate">{title}</span>
-				</span>
-			</div>
+			{title && (
+				<div className="c-empty-state-title">
+					<span className="text-truncate-inline">
+						<span className="text-truncate">{title}</span>
+					</span>
+				</div>
+			)}
 
 			<div className="c-empty-state-text">{description}</div>
 

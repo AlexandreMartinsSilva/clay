@@ -3,6 +3,81 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.67.0](https://github.com/liferay/clay/compare/v3.66.0...v3.67.0) (2022-07-25)
+
+**Note:** Version bump only for package @clayui/modal
+
+# [3.65.0](https://github.com/liferay/clay/compare/v3.64.0...v3.65.0) (2022-07-11)
+
+**Note:** Version bump only for package @clayui/modal
+
+# [3.58.0](https://github.com/liferay/clay/compare/v3.57.0...v3.58.0) (2022-05-23)
+
+**Note:** Version bump only for package @clayui/modal
+
+# [3.56.0](https://github.com/liferay/clay/compare/v3.55.0...v3.56.0) (2022-05-09)
+
+### Features
+
+-   **@clayui/modal:** Add a children property to IProps as a ReactNode to avoid warning error ([f8f56c9](https://github.com/liferay/clay/commit/f8f56c92a5e5bac86421a06b15cc1815b0161aab)), closes [#4843](https://github.com/liferay/clay/issues/4843)
+
+# [3.55.0](https://github.com/liferay/clay/compare/v3.54.0...v3.55.0) (2022-05-02)
+
+### Features
+
+-   **@clayui/modal:** add the state of open and close in `useModal` hook to be controlled ([c62ac62](https://github.com/liferay/clay/commit/c62ac62508d67c482a1c14a17471d87cf8453f45))
+-   **@clayui/modal:** change ModalProvider actions to be readable ([671b011](https://github.com/liferay/clay/commit/671b0119680abfe7bbf46a2e58c9d7a92f4c436c))
+
+# [3.52.0](https://github.com/liferay/clay/compare/v3.51.0...v3.52.0) (2022-04-04)
+
+### Features
+
+-   **@clayui/modal:** When using ClayModalProvider, `footer`,`header` properties now are optional ([4bcbac2](https://github.com/liferay/clay/commit/4bcbac2d42be1c3d58876bbf65cd2e6d86c1b6fc))
+
+# [3.50.0](https://github.com/liferay/clay/compare/v3.49.0...v3.50.0) (2022-03-21)
+
+### Features
+
+-   **@clayui/modal:** improves ClayModal component accessibility ([60b24fc](https://github.com/liferay/clay/commit/60b24fc4ba8dc748474a67323e625bbaa6aab867))
+
+# [3.49.0](https://github.com/liferay/clay/compare/v3.48.0...v3.49.0) (2022-03-15)
+
+**Note:** Version bump only for package @clayui/modal
+
+# [3.47.0](https://github.com/liferay/clay/compare/v3.46.0...v3.47.0) (2022-02-23)
+
+**Note:** Version bump only for package @clayui/modal
+
+# [3.45.0](https://github.com/liferay/clay/compare/v3.44.2...v3.45.0) (2022-02-01)
+
+**Note:** Version bump only for package @clayui/modal
+
+# [3.40.0](https://github.com/liferay/clay/compare/v3.39.0...v3.40.0) (2021-11-17)
+
+**Note:** Version bump only for package @clayui/modal
+
+# [3.39.0](https://github.com/liferay/clay/compare/v3.38.0...v3.39.0) (2021-10-29)
+
+**Note:** Version bump only for package @clayui/modal
+
+# [3.38.0](https://github.com/liferay/clay/compare/v3.37.0...v3.38.0) (2021-10-22)
+
+### Features
+
+-   **@clayui/modal:** add the preventAutoClose prop ([af7b12f](https://github.com/liferay/clay/commit/af7b12feb8491f4ffc928526fb8a4c10ec017cbd)), closes [#4355](https://github.com/liferay/clay/issues/4355)
+
+# [3.37.0](https://github.com/liferay/clay/compare/v3.36.0...v3.37.0) (2021-10-06)
+
+**Note:** Version bump only for package @clayui/modal
+
+# [3.36.0](https://github.com/liferay/clay/compare/v3.35.3...v3.36.0) (2021-09-23)
+
+**Note:** Version bump only for package @clayui/modal
+
+## [3.35.3](https://github.com/liferay/clay/compare/v3.35.2...v3.35.3) (2021-09-09)
+
+**Note:** Version bump only for package @clayui/modal
+
 ## [3.35.2](https://github.com/liferay/clay/compare/v3.35.1...v3.35.2) (2021-08-30)
 
 **Note:** Version bump only for package @clayui/modal
